@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { ViewChild } from "@angular/core";
+import {Component, OnInit} from "@angular/core";
+import {ViewChild} from "@angular/core";
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",

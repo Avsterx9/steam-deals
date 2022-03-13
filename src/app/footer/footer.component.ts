@@ -1,4 +1,6 @@
+import {HttpClient} from "@angular/common/http";
 import {Component} from "@angular/core";
+import {AppConfigService} from "../app-config.service";
 
 @Component({
   selector: "app-footer",
@@ -6,5 +8,15 @@ import {Component} from "@angular/core";
   styleUrls: ["./footer.component.sass"],
 })
 export class FooterComponent {
-  constructor() {}
+  apiVersion!: string;
+
+  constructor(private configService: AppConfigService, private http: HttpClient) {
+    this.getCurrentApiVersion();
+  }
+
+  private getCurrentApiVersion() {
+    this.http.get(this.configService.apiBaseUrl).subscribe((response: any) => {
+      this.apiVersion = response.version;
+    });
+  }
 }

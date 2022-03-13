@@ -1,0 +1,30 @@
+@use 'src/app/colors' as colors
+
+.footer-container
+  background-color: colors.$background-color-light-version
+  width: 100%
+  position: absolute
+  border-top: 1px solid colors.$primary-color
+  padding-top: 10px
+  color: colors.$light-color
+  text-align: center
+
+.footer-content
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  text-align: center
+
+.footer-content h3
+  font-size: 2rem
+  font-weight: 500
+  text-transform: capitalize
+  line-height: 1rem
+
+.footer-content p
+  max-width: 700px
+  margin: 10px auto
+  line-height: 28px
+  font-size: 14px
+  color: colors.$light-color

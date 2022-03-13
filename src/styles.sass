@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-$background-color: rgb(26, 26, 26)
+@use 'src/app/colors' as colors
 
 *
   font-family: "DejaVu Sans"
 
 body
-  background-color: $background-color
+  background-color: colors.$background-color-dark-version

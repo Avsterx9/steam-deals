@@ -9,9 +9,15 @@ import { HomepageComponent } from "./homepage/homepage.component";
 import { APP_INITIALIZER } from "@angular/core";
 import { AppConfigService } from "./app-config.service";
 import { HttpClientModule } from "@angular/common/http";
+import { FooterComponent } from "./footer/footer.component";
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HomepageComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    HomepageComponent,
+    FooterComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
     {

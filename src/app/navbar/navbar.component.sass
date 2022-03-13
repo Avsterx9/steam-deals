@@ -1,9 +1,7 @@
-$nav-background-color: rgb(30, 30, 30)
-$nav-primary-color: rgb(1, 194, 8)
-$nav-light-color: rgb(231, 231, 231)
+@use "src/app/colors" as colors
 
 *
-  color: $nav-light-color
+  color: colors.$light-color
   margin: 0
   padding: 0
   box-sizing: border-box
@@ -17,7 +15,7 @@ $nav-light-color: rgb(231, 231, 231)
   justify-content: space-between
 
 h1
-  color: $nav-light-color
+  color: colors.$light-color
   font-size: 28px
   font-weight: 900
 
@@ -27,7 +25,7 @@ nav
   left: 0
   right: 0
   z-index: 99
-  background-color: $nav-background-color
+  background-color: colors.$background-color-light-version
   padding: 16px 32px
 
 .hamburger
@@ -47,7 +45,7 @@ nav
   height: 4px
   margin-bottom: 5px
 
-  background-color: $nav-light-color
+  background-color: colors.$light-color
   border-radius: 6px
   z-index: 1
 
@@ -57,7 +55,7 @@ nav
   //wez drugie dziecko (span) z hamburgera
 .hamburger:hover   span:nth-child(2)
   transform: translateX(10px)
-  background-color: $nav-primary-color
+  background-color: colors.$primary-color
 
 .hamburger.is-active span:nth-child(1)
   transform: translate(0px, -2px) rotate(45deg)
@@ -70,7 +68,7 @@ nav
   transform: translate(-3px, 3px) rotate(-45deg)
 
 .hamburger.is-active:hover span
-  background-color: $nav-primary-color
+  background-color: colors.$primary-color
 
 .menu
   display: none
@@ -79,15 +77,15 @@ nav
   margin: 0 -16px
 
 .menu a
-  color: $nav-light-color
+  color: colors.$light-color
   margin: 0 8px
   text-decoration: none
   transition: 0.4s
   padding: 8px 16px
-  border-bottom: 3px solid $nav-background-color
+  border-bottom: 3px solid colors.$background-color-light-version
 
 .menu a.is-active, .menu a:hover
-  border-bottom: 3px solid $nav-primary-color
+  border-bottom: 3px solid colors.$primary-color
   //background-color: $nav-background-color
 
 

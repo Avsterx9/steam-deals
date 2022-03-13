@@ -1,18 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import {ViewChild} from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { ViewChild } from "@angular/core";
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.sass']
+  selector: "app-navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.sass"],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  expandHamburger(hamburger:HTMLButtonElement) {
-    hamburger.classList.toggle('is-active');
+  expandHamburger(hamburger: HTMLButtonElement) {
+    hamburger.classList.toggle("is-active");
   }
 }

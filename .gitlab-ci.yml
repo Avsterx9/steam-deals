@@ -1,0 +1,37 @@
+stages:
+  - test and code analysis
+
+.configuration:
+  image: ubuntu:20.04
+  before_script:
+    - apt-get update -qq &&
+    - DEBIAN_FRONTEND=noninteractive
+      apt-get install -y
+      curl
+      npm
+    - npm install -g npm@latest
+    - npm cache clean -f
+    - npm install -g n
+    - n stable
+    - hash -r
+    - node -v && npm -v
+
+#==============================| TESTS AND CODE ANALYSIS |==============================
+
+Edit code with ESlint:
+  stage: test and code analysis
+  extends: .configuration
+  allow_failure: true
+  script:
+    - echo [ Running ESlint ]
+    - npm install @angular-eslint/eslint-plugin@latest --save-dev
+    - npx eslint .
+
+Check code with Prettier:
+  stage: test and code analysis
+  extends: .configuration
+  allow_failure: true
+  script:
+    - echo [ Checking wirh Prettier ]
+    - npm install --save-dev --save-exact prettier
+    - npx prettier --check .

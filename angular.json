@@ -61,16 +61,26 @@
               "namedChunks": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
+            "PRODUCTION": {
+              "browserTarget": "steam-deals-frontend:build:production",
+              "port": 80
+            },
+            "DEVELOPMENT": {
+              "browserTarget": "steam-deals-frontend:build:development",
+              "port": 8080
+            },
             "production": {
-              "browserTarget": "steam-deals-frontend:build:production"
+              "browserTarget": "steam-deals-frontend:build:production",
+              "port": 80
             },
             "development": {
-              "browserTarget": "steam-deals-frontend:build:development"
+              "browserTarget": "steam-deals-frontend:build:development",
+              "port": 8080
             }
           },
           "defaultConfiguration": "development"

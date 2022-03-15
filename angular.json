@@ -53,6 +53,12 @@
               "outputHashing": "all"
             },
             "development": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -68,22 +74,18 @@
           "configurations": {
             "PRODUCTION": {
               "browserTarget": "steam-deals-frontend:build:production",
-              "port": 80
+              "host": "0.0.0.0",
+              "port": 80,
+              "disableHostCheck": true
             },
             "DEVELOPMENT": {
               "browserTarget": "steam-deals-frontend:build:development",
-              "port": 8080
-            },
-            "production": {
-              "browserTarget": "steam-deals-frontend:build:production",
-              "port": 80
-            },
-            "development": {
-              "browserTarget": "steam-deals-frontend:build:development",
-              "port": 8080
+              "host": "0.0.0.0",
+              "port": 8080,
+              "disableHostCheck": true
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "DEVELOPMENT"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

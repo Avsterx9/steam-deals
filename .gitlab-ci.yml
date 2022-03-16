@@ -1,5 +1,23 @@
 stages:
   - test and code analysis
+  - build
+  - deploy
+
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+      variables:
+        ENVIRONMENT_NAME: DEVELOPMENT
+        FRONTEND_PORT: "8080" # WORKAROUND -> numeric without quotes causes <Pipeline cannot be run. Something went wrong on our end. Please try again.>
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      variables:
+        ENVIRONMENT_NAME: PRODUCTION
+        FRONTEND_PORT: "80"
+    - when: always
+
+variables:
+  TAG_LATEST: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:latest
+  TAG_COMMIT: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:$CI_COMMIT_SHORT_SHA
 
 .configuration:
   image: ubuntu:20.04
@@ -18,7 +36,7 @@ stages:
 
 #==============================| TESTS AND CODE ANALYSIS |==============================
 
-Edit code with ESlint:
+Lint code with ESLint:
   stage: test and code analysis
   extends: .configuration
   allow_failure: true
@@ -32,6 +50,49 @@ Check code with Prettier:
   extends: .configuration
   allow_failure: true
   script:
-    - echo [ Checking wirh Prettier ]
+    - echo [ Checking with Prettier ]
     - npm install --save-dev --save-exact prettier
     - npx prettier --check .
+
+#==============================| BUILD |==============================
+
+Build and push docker image:
+  image: docker:20.10.13
+  stage: build
+  needs: [ "Lint code with ESLint", "Check code with Prettier" ]
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+  services:
+    - docker:20.10.13-dind
+  script:
+    - echo [ Building a docker image started. ]
+    - docker build --build-arg ENVIRONMENT_NAME=$ENVIRONMENT_NAME -t $TAG_COMMIT -t $TAG_LATEST .
+    - echo $CI_BUILD_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY # -p gives <WARNING! Using --password via the CLI is insecure. Use --password-stdin.>
+    - docker push $TAG_COMMIT
+    - docker push $TAG_LATEST
+  only:
+    - develop
+    - master
+
+#==============================| DEPLOY |==============================
+
+Deploy to azure server:
+  image: alpine:latest
+  stage: deploy
+  needs: [ "Build and push docker image" ]
+  script:
+    - echo [ Deploying to $ENVIRONMENT_NAME on port $FRONTEND_PORT started. ]
+    - chmod 400 $ID_RSA
+    - apk update && apk add openssh-client
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY"
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker pull $TAG_COMMIT"
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker container rm -f ${ENVIRONMENT_NAME}_FRONTEND || true"
+    - ssh -i $ID_RSA -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker run -d -p $FRONTEND_PORT:$FRONTEND_PORT --restart always --name ${ENVIRONMENT_NAME}_FRONTEND $TAG_COMMIT"
+  environment:
+    name: $ENVIRONMENT_NAME
+    url: http://$SERVER_IP:$FRONTEND_PORT
+  only:
+    - develop
+    - master
+  when: manual

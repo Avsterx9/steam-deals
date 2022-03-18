@@ -1,5 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
-@use 'src/app/colors' as colors
+\:root
+  --primary-color: null
+  --background-color-light-version: null
+  --font-color: null
+  --background-color-dark-version: null
 
 @font-face
   font-family: "Nunito"
@@ -9,4 +12,4 @@
   font-family: 'Noto Sans', sans-serif, 'Nunito', sans-serif, 'Open Sans', sans-serif, 'Ubuntu', sans-serif
 
 body
-  background-color: colors.$background-color-dark-version
+  background-color: var(--background-color-dark-version)

@@ -1,12 +1,10 @@
-@use 'src/app/colors' as colors
-
 .footer-container
-  background-color: colors.$background-color-light-version
+  background-color: var(--background-color-light-version)
   width: 100%
   position: absolute
-  border-top: 1px solid colors.$primary-color
+  border-top: 1px solid var(--primary-color)
   padding-top: 10px
-  color: colors.$light-color
+  color: var(--font-color)
   text-align: center
 
 .footer-content
@@ -27,4 +25,4 @@
   margin: 10px auto
   line-height: 28px
   font-size: 14px
-  color: colors.$light-color
+  color: var(--font-color)

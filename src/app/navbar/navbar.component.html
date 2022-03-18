@@ -10,12 +10,15 @@
 
       <div class="color-switcher">
         <label>
-          <input type="checkbox" class="color-switch-input">
+          <input
+            [attr.checked]="isDark ? true : null"
+            type="checkbox"
+            class="color-switch-input"
+            (click)="switchTheme()"
+          />
           <span class="color-check"></span>
         </label>
-
       </div>
-
     </div>
 
     <button class="hamburger" (click)="expandHamburger(hamburger)" #hamburger>

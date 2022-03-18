@@ -1,19 +1,16 @@
-@use 'src/app/colors' as colors
-
 home-page-container
   width: 100%
 
 .search-box
   margin: auto
-  color: colors.$light-color
+  color: var(--font-color)
   background-color: inherit
-  width: 100%
   padding: 2em
 
 input[type="text"]
   margin: auto
   display: block
-  background-color: colors.$light-color
+  background-color: white
   width: 80%
   height: 10%
   border: none
@@ -25,6 +22,6 @@ input:focus
   transition: 0.3s
 
 .content-box
-  color: colors.$light-color
+  color: var(--font-color)
   padding: 2em
   margin: auto

@@ -52,8 +52,8 @@ nav
   transform-origin: 0 0
   transition: 0.4s
 
-  //wez drugie dziecko (span) z hamburgera
-.hamburger:hover   span:nth-child(2)
+//wez drugie dziecko (span) z hamburgera
+.hamburger:hover span:nth-child(2)
   transform: translateX(10px)
   background-color: colors.$primary-color
 
@@ -86,8 +86,64 @@ nav
 
 .menu a.is-active, .menu a:hover
   border-bottom: 3px solid colors.$primary-color
-  //background-color: $nav-background-color
+//background-color: $nav-background-color
 
+
+//===========================COLOR-SWITCHER===============================
+
+.color-switcher
+  justify-content: center
+  align-items: center
+  float: right
+
+input[type="checkbox"]
+  -webkit-appearance: none
+  visibility: hidden
+  display: none
+
+.color-check
+  top: 20%
+  position: relative
+  display: block
+  width: 40px
+  height: 20px
+  background: colors.$background-color-dark-version
+  cursor: pointer
+  border-radius: 20px
+  overflow: hidden
+  transition: ease-in 0.5s
+
+input[type="checkbox"]:checked ~ .color-check
+  background: white
+
+.color-check:before
+  content: ''
+  position: absolute
+  top: 2px
+  left: 2px
+  background: white
+  width: 16px
+  height: 16px
+  border-radius: 50%
+  transition: 0.5s
+
+input[type="checkbox"]:checked ~ .color-check:before
+  transform: translateX(-50px)
+
+.color-check:after
+  content: ''
+  position: absolute
+  top: 2px
+  left: 2px
+  background: colors.$primary-color
+  width: 16px
+  height: 16px
+  border-radius: 50%
+  transition: 0.5s
+  transform: translateX(50px)
+
+input[type="checkbox"]:checked ~ .color-check:after
+  transform: translateX(0px)
 
 @media (min-width: 768px)
   .hamburger

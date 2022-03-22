@@ -7,9 +7,10 @@ import {HomepageComponent} from "./homepage/homepage.component";
 import {HttpClientModule} from "@angular/common/http";
 import {FooterComponent} from "./footer/footer.component";
 import {NavbarComponent} from "./navbar/navbar.component";
+import {LoginComponent} from "./login/login.component";
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HomepageComponent, FooterComponent],
+  declarations: [AppComponent, NavbarComponent, HomepageComponent, FooterComponent, LoginComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -6,19 +6,32 @@
       <a href="/" class="is-active">Home</a>
       <a href="#">Link1</a>
       <a href="#">Link2</a>
-      <a href="/login">Logowanie</a>
+    </div>
 
-      <div class="color-switcher">
-        <label>
-          <input
-            [attr.checked]="isDark ? true : null"
-            type="checkbox"
-            class="color-switch-input"
-            (click)="switchTheme()"
-          />
-          <span class="color-check"></span>
-        </label>
-      </div>
+    <div class="login-div">
+      <button class="login-btn" *ngIf="!isLogged">
+        <a href="/login">Zaloguj</a>
+      </button>
+
+      <button class="logout-btn" *ngIf="isLogged" (click)="logout()">
+        Wyloguj
+      </button>
+    </div>
+
+    <div class="logged-user-panel" *ngIf="isLogged" >
+      {{userDetails['username']}}
+    </div>
+
+    <div class="color-switcher">
+      <label>
+        <input
+          [attr.checked]="isDark ? true : null"
+          type="checkbox"
+          class="color-switch-input"
+          (click)="switchTheme()"
+        />
+        <span class="color-check"></span>
+      </label>
     </div>
 
     <button class="hamburger" (click)="expandHamburger(hamburger)" #hamburger>

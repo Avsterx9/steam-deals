@@ -1,14 +1,14 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthenticationService {
-
   backendURL: string = "http://localhost:5555";
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   loginUser(userName: string, userPassword: string) {
@@ -20,7 +20,7 @@ export class UserAuthenticationService {
       (res: any) => {
         console.log("Login Successful")
         this.saveUserToken(res['access_token']);
-        this.authenticateUser();
+        window.location.reload();
       },
       (err) => {
         return err;
@@ -38,16 +38,16 @@ export class UserAuthenticationService {
 
   authenticateUser() {
     var accessToken = this.getUserAccessToken();
-    console.log(accessToken);
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
     })
-    this.http.get(this.backendURL + "/me", { headers: headers}).subscribe(
-      res => {
-        console.log(res);
-      }
-    )
+    return this.http.get(this.backendURL + "/me", {headers: headers})
+  }
+
+  logout() {
+    localStorage.removeItem("access-token");
   }
 }
+

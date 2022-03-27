@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import { UserAuthenticationService } from "../services/user-authentication.service";
 
 @Component({
   selector: "app-login",
@@ -6,5 +7,12 @@ import {Component, OnInit} from "@angular/core";
   styleUrls: ["./login.component.sass"],
 })
 export class LoginComponent {
-  constructor() {}
+  userName:string='';
+  userPassword:string='';
+
+  constructor(private authenticationService: UserAuthenticationService) {}
+
+  loginUser() {
+    this.authenticationService.loginUser(this.userName, this.userPassword);
+  }
 }

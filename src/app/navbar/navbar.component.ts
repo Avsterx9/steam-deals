@@ -12,6 +12,7 @@ export class NavbarComponent {
   isDark!: boolean;
   darkTheme = new DarkTheme();
   lightTheme = new LightTheme();
+  check : boolean = false;
 
   constructor(private localStorageService: LocalStorageService) {
     let theme = localStorageService.getAndParse("theme");
@@ -25,8 +26,8 @@ export class NavbarComponent {
     this.setColorVariables(theme);
   }
 
-  expandHamburger(hamburger: HTMLButtonElement) {
-    hamburger.classList.toggle("is-active");
+  dropMenu() {
+    this.check = !this.check;
   }
 
   switchTheme() {

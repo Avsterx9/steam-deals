@@ -4,29 +4,50 @@
   padding: 0
   box-sizing: border-box
 
-.nav-container
-  max-width: 1200px
-  margin: 0 auto
-
-  display: flex
-  align-items: center
-  justify-content: space-between
+/* Nav Styling */
 
 h1
   font-size: 28px
   font-weight: 900
 
 nav
-  position: fixed
-  top: 0
-  left: 0
-  right: 0
-  z-index: 99
+  display: flex
+  justify-content: space-between
+  align-items: center
+  height: 8vh
+  padding: 2em
+  position: relative
   background-color: var(--background-color-light-version)
-  padding: 16px 32px
 
-.hamburger
-  display: block
+ul
+  list-style-type: none
+  display: flex
+  width: 55%
+  justify-content: flex-end
+
+a
+  text-decoration: none
+  font-size: 1.3em
+  position: relative
+  padding: .5em
+
+a::after
+  content: ""
+  position: absolute
+  bottom: 0
+  left: 0
+  background-color: var(--primary-color)
+  height: .10em
+  border-radius: 10px
+  transition: ease-in-out .4s
+
+a:hover::after
+  width: 100%
+
+/* Burger Styling */
+
+.burger
+  display: none
   position: relative
   z-index: 1
   user-select: none
@@ -36,7 +57,7 @@ nav
   background: none
   cursor: pointer
 
-.hamburger span
+.burger span
   display: block
   width: 33px
   height: 4px
@@ -49,42 +70,27 @@ nav
   transform-origin: 0 0
   transition: 0.4s
 
-.hamburger:hover span:nth-child(2)
+.burger:hover span:nth-child(2)
   transform: translateX(10px)
   background-color: var(--primary-color)
 
-.hamburger.is-active span:nth-child(1)
+.burger.is-active span:nth-child(1)
   transform: translate(0px, -2px) rotate(45deg)
 
-.hamburger.is-active span:nth-child(2)
+.burger.is-active span:nth-child(2)
   opacity: 0
   transform: translateX(15px)
 
-.hamburger.is-active span:nth-child(3)
+.burger.is-active span:nth-child(3)
   transform: translate(-3px, 3px) rotate(-45deg)
 
-.hamburger.is-active:hover span
+.burger.is-active:hover span
   background-color: var(--primary-color)
-
-.menu
-  display: none
-  flex: 1 1 0%
-  justify-content: flex-end
-  margin: 0 -16px
-
-.menu a
-  color: var(--font-color)
-  margin: 0 8px
-  text-decoration: none
-  transition: 0.1s
-  padding: 8px 16px
-
-.menu a.is-active, .menu a:hover
-  border-bottom: 3px solid var(--primary-color)
 
 //===========================COLOR-SWITCHER===============================
 
 .color-switcher
+  display: flex
   justify-content: center
   align-items: center
   float: right
@@ -138,8 +144,33 @@ input[type="checkbox"]:checked ~ .color-check:before
 input[type="checkbox"]:checked ~ .color-check:after
   transform: translateX(0px)
 
-@media (min-width: 768px)
-  .hamburger
-    display: none
-  .menu
+@media (max-width: 768px)
+  .burger
+    display: block
+    transition: easy-in-out 0.3s
+
+  ul
+    position: absolute
+    right: 0
+    top: 8vh
+    background: var(--background-color-dark-version)
+    height: 40vh
+    justify-content: space-around
+    flex-direction: column
+    text-align: center
+    width: 100%
+    transform: translate(100%)
+    //transition: ease-in-out 0.3s
+
+  ul.is-active
+    transform: translate(0%)
+
+  a
+    font-size: 1.3em
+    letter-spacing: 2px
+
+  .color-switcher
     display: flex
+    justify-content: flex-end
+    align-items: flex-end
+    float: right

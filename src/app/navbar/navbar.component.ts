@@ -30,8 +30,8 @@ export class NavbarComponent implements OnInit{
   }
 
   ngOnInit(): void {
-        this.checkIfUserIsLogged();
-    }
+    this.checkIfUserIsLogged();
+  }
 
   expandHamburger(hamburger: HTMLButtonElement) {
     hamburger.classList.toggle("is-active");
@@ -52,19 +52,20 @@ export class NavbarComponent implements OnInit{
   }
 
   checkIfUserIsLogged(){
-    this.authenticationService.authenticateUser().subscribe(
+    this.authenticationService.getUserDetails().subscribe(
       (res:any) => {
         this.isLogged = true;
         this.userDetails = res;
+        console.log(res);
       },
       (err) => {
-        console.log("Niezalogowany")
+        console.log("Niezalogowany");
+        console.log(err);
       }
     )
   }
 
   logout() {
     this.authenticationService.logout();
-    window.location.reload();
   }
 }

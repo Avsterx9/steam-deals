@@ -9,6 +9,7 @@ import { UserAuthenticationService } from "../services/user-authentication.servi
 export class LoginComponent {
   userName:string='';
   userPassword:string='';
+  inputError: boolean = false;
 
   constructor(private authenticationService: UserAuthenticationService) {}
 

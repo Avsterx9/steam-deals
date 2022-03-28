@@ -1,6 +1,8 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
+import {CookieService} from 'ngx-cookie-service';
+import { ConnectionWrapperService } from './connection-wrapper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ import { Router } from '@angular/router';
 export class UserAuthenticationService {
   backendURL: string = "http://localhost:5555";
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private wrapper : ConnectionWrapperService) {
   }
 
   loginUser(userName: string, userPassword: string) {
@@ -16,38 +18,35 @@ export class UserAuthenticationService {
     formData.append("username", userName);
     formData.append("password", userPassword);
 
-    this.http.post(this.backendURL + "/token", formData).subscribe(
+    this.http.post(this.backendURL + "/token", formData, {withCredentials: true}).subscribe(
       (res: any) => {
-        console.log("Login Successful")
-        this.saveUserToken(res['access_token']);
+        console.log("Login Succes, Token: " + res)
         window.location.reload();
       },
       (err) => {
+        console.log("Login Failed" + err)
         return err;
       }
     )
   }
 
-  private saveUserToken(responseData: any) {
-    localStorage.setItem("access-token", responseData as string)
-  }
-
-  private getUserAccessToken(): string {
-    return localStorage.getItem("access-token") || '{}'
-  }
-
-  authenticateUser() {
-    var accessToken = this.getUserAccessToken();
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${accessToken}`
-    })
-    return this.http.get(this.backendURL + "/me", {headers: headers})
+  getUserDetails() {
+    return this.http.get(this.backendURL + "/me", {withCredentials: true})
   }
 
   logout() {
-    localStorage.removeItem("access-token");
+    let enco : any = new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded');
+
+    this.http.post(this.backendURL + "/logout", {headers: enco, withCredentials: true}).subscribe(
+      (res: any) => {
+        console.log("Logout Success : " + res);
+      },
+      (err) => {
+        console.log("Logout Failed" + err);
+        return err;
+      }
+    )
   }
 }
 

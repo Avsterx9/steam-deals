@@ -15,6 +15,9 @@
       </div>
 <!--      <input type="submit" value="Zaloguj" (onCLick)="loginUser()" />-->
       <button class="submit-button" (click)="loginUser()"> Zaloguj</button>
+
+      <h1 class="login-error-msg" *ngIf="inputError"></h1>
+
       <div class="registration-link">Nie masz konta? <a href="/registration">Rejestracja</a></div>
     </form>
   </div>

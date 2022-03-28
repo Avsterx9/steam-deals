@@ -152,11 +152,16 @@ input[type="checkbox"]:checked ~ .color-check:after
 .logged-user-panel
   align-items: center
   padding: 10px
+  font-weight: bold
+  margin-right: 1em
+  border-bottom: 3px solid var(--primary-color)
 
 .login-btn
   background-color: var(--primary-color)
   color: var(--font-color)
   cursor: pointer
+  border-radius: 2em
+  font-weight: bold
   width: 7em
   height: 3em
   border: none
@@ -164,10 +169,11 @@ input[type="checkbox"]:checked ~ .color-check:after
 .logout-btn
   background-color: var(--background-color-light-version)
   color: var(--font-color)
+  border: 1px solid var(--primary-color)
+  border-radius: 2em
   cursor: pointer
-  width: 4em
+  width: 6em
   height: 3em
-  border: none
 
 .login-btn:hover
   background-color: var(--background-color-light-version)
@@ -175,7 +181,7 @@ input[type="checkbox"]:checked ~ .color-check:after
   transition: 0.2s
 
 .logout-btn:hover
-  color: var(--primary-color)
+  background-color: var(--primary-color)
   cursor: pointer
   transition: 0.2s
 

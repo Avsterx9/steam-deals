@@ -59,7 +59,7 @@ form .text-field
 .text-field input:focus ~ label,
 .text-field input:valid ~ label
   top: -5px
-  color: var(--font-color)
+  color: var(--primary-color)
 
 .text-field input:focus ~ span::before,
 .text-field input:valid ~ span::before
@@ -101,7 +101,9 @@ input[type="submit"]:hover
   outline: none
 
 .submit-button:hover
-  transition: 0.5s
+  transition: 0.2s
+  background-color: var(--background-color-light-version)
+  border: 1px solid var(--primary-color)
 
 .registration-link
   margin: 30px

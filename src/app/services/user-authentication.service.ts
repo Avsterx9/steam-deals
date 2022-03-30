@@ -1,13 +1,13 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
-import {CookieService} from "ngx-cookie-service";
+import {environment} from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class UserAuthenticationService {
-  backendURL: string = "http://localhost:5555";
+  backendURL: string = environment.backendURL;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -18,12 +18,12 @@ export class UserAuthenticationService {
 
     this.http.post(this.backendURL + "/token", formData, {withCredentials: true}).subscribe(
       (res: any) => {
-        console.log("Login Succes, Token: " + res);
+        console.log("Login Succes, Token: " + res.access_token);
         window.location.reload();
       },
       (err) => {
-        console.log("Login Failed" + err);
-        return err;
+        console.log("Login Failed:");
+        console.log(err);
       }
     );
   }

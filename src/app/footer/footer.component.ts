@@ -18,8 +18,12 @@ export class FooterComponent {
     this.http.get(environment.backendURL).subscribe(
       (response: any) => {
         this.apiVersion = response.version;
-      }, (err: any) => {
-        console.log("[ERROR] Cannot get current backend API version, error: " + err.status + "| Message: " + err.message)
-      });
+      },
+      (err: any) => {
+        console.log(
+          "[ERROR] Cannot get current backend API version, error: " + err.status + "| Message: " + err.message
+        );
+      }
+    );
   }
 }

@@ -1,31 +1,45 @@
 <div class="registration-page-container">
   <div class="registration-form-container">
     <h1>Rejestracja</h1>
-    <form method="post">
+    <form>
       <div class="text-field">
-        <input type="text" required />
+        <input type="text" [(ngModel)]="userName" name="userName" required />
+        <span></span>
+        <label>Nazwa Użytkownika</label>
+      </div>
+
+      <div class="text-field">
+        <input type="text" [(ngModel)]="firstName" name="firstName" required />
         <span></span>
         <label>Imię</label>
       </div>
 
       <div class="text-field">
-        <input type="text" required />
+        <input type="text" [(ngModel)]="lastName" name="lastName" required />
         <span></span>
         <label>Nazwisko</label>
       </div>
 
       <div class="text-field">
-        <input type="text" required />
+        <input type="text" [(ngModel)]="email" name="email" required />
         <span></span>
         <label>Email</label>
       </div>
 
       <div class="text-field">
-        <input type="password" required />
+        <input type="password" [(ngModel)]="password1" name="password1" required />
         <span></span>
         <label>Hasło</label>
       </div>
-      <input type="submit" value="Rejestruj" />
+
+      <div class="text-field">
+        <input type="password" [(ngModel)]="password2" name="password2" required />
+        <span></span>
+        <label>Powtórz hasło</label>
+      </div>
+      <label class="error-msg" *ngIf="showError">{{ errorMsg }}</label>
+
+      <button class="submit-button" (click)="registerUser()">Rejestruj</button>
     </form>
   </div>
 </div>

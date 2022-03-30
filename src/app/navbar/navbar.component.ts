@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {ViewChild} from "@angular/core";
 import {LocalStorageService} from "../services/local-storage.service";
 import {UserAuthenticationService} from "../services/user-authentication.service";
@@ -9,7 +9,7 @@ import {DarkTheme, LightTheme, Theme} from "../themes";
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.sass"],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   isDark!: boolean;
   darkTheme = new DarkTheme();
   lightTheme = new LightTheme();
@@ -30,9 +30,7 @@ export class NavbarComponent implements OnInit {
       this.isDark = true;
     }
     this.setColorVariables(theme);
-  }
 
-  ngOnInit(): void {
     this.checkIfUserIsLogged();
   }
 
@@ -57,6 +55,7 @@ export class NavbarComponent implements OnInit {
   checkIfUserIsLogged() {
     this.authenticationService.getUserDetails().subscribe(
       (res: any) => {
+        console.log("Logged User: " + res.first_name + " " + res.last_name);
         this.isLogged = true;
         this.userDetails = res;
       },

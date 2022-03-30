@@ -62,7 +62,6 @@ export class NavbarComponent implements OnInit {
       },
       (err) => {
         this.isLogged = false;
-        this.logout();
       }
     );
   }

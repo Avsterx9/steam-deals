@@ -39,8 +39,7 @@ export class UserAuthenticationService {
         window.location.reload();
       },
       (err) => {
-        console.log("Logout Failed" + err);
-        return err;
+        console.log("[ERROR] Logout Failed with status:" + err.status + " | Message: " + err.message);
       }
     );
   }

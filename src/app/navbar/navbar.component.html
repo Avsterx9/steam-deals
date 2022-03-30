@@ -13,13 +13,11 @@
         <a href="/login">Zaloguj</a>
       </button>
 
-      <button class="logout-btn" *ngIf="isLogged" (click)="logout()">
-        Wyloguj
-      </button>
+      <button class="logout-btn" *ngIf="isLogged" (click)="logout()">Wyloguj</button>
     </div>
 
-    <div class="logged-user-panel" *ngIf="isLogged" >
-      {{userDetails['username']}}
+    <div class="logged-user-panel" *ngIf="isLogged">
+      {{ userDetails["username"] }}
     </div>
 
     <div class="color-switcher">

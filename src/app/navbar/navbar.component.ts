@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ViewChild} from "@angular/core";
 import {LocalStorageService} from "../services/local-storage.service";
-import { UserAuthenticationService } from "../services/user-authentication.service";
+import {UserAuthenticationService} from "../services/user-authentication.service";
 import {DarkTheme, LightTheme, Theme} from "../themes";
 
 @Component({
@@ -9,7 +9,7 @@ import {DarkTheme, LightTheme, Theme} from "../themes";
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.sass"],
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
   isDark!: boolean;
   darkTheme = new DarkTheme();
   lightTheme = new LightTheme();
@@ -17,7 +17,10 @@ export class NavbarComponent implements OnInit{
   isLogged: boolean = false;
   userDetails: any;
 
-  constructor(private localStorageService: LocalStorageService, private authenticationService: UserAuthenticationService) {
+  constructor(
+    private localStorageService: LocalStorageService,
+    private authenticationService: UserAuthenticationService
+  ) {
     let theme = localStorageService.getAndParse("theme");
     if (theme) {
       this.isDark = theme.isDark;
@@ -51,18 +54,17 @@ export class NavbarComponent implements OnInit{
     document.documentElement.style.setProperty("--primary-color", theme.primaryColor);
   }
 
-  checkIfUserIsLogged(){
+  checkIfUserIsLogged() {
     this.authenticationService.getUserDetails().subscribe(
-      (res:any) => {
+      (res: any) => {
         this.isLogged = true;
         this.userDetails = res;
-        console.log(res);
       },
       (err) => {
-        console.log("Niezalogowany");
-        console.log(err);
+        this.isLogged = false;
+        this.logout();
       }
-    )
+    );
   }
 
   logout() {

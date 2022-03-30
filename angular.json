@@ -65,9 +65,23 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "development_local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.local.ts"
+                }
+              ],
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development_local"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -83,9 +97,15 @@
               "host": "0.0.0.0",
               "port": 8080,
               "disableHostCheck": true
+            },
+            "DEVELOPMENT_LOCAL": {
+              "browserTarget": "steam-deals-frontend:build:development_local",
+              "host": "0.0.0.0",
+              "port": 8080,
+              "disableHostCheck": true
             }
           },
-          "defaultConfiguration": "DEVELOPMENT"
+          "defaultConfiguration": "DEVELOPMENT_LOCAL"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

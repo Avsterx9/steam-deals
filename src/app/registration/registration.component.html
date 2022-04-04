@@ -33,11 +33,19 @@
       </div>
 
       <div class="text-field">
-        <input type="password" [(ngModel)]="password2" name="password2" required />
+        <input
+          type="password"
+          [(ngModel)]="password2"
+          name="password2"
+          (ngModelChange)="validatePasswords()"
+          required
+        />
         <span></span>
         <label>Confirm Password</label>
       </div>
-      <label class="error-msg" *ngIf="showError">{{ errorMsg }}</label>
+      <div class="error_container">
+        <label class="error-msg" *ngIf="showError">{{ errorMsg }}</label>
+      </div>
 
       <button class="submit-button" (click)="registerUser()">Sign up</button>
     </form>

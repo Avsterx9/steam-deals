@@ -32,4 +32,13 @@ export class RegistrationComponent {
         }
       );
   }
+
+  validatePasswords() {
+    if (this.password1 != this.password2) {
+      this.showError = true;
+      this.errorMsg = "Password are not the same";
+    } else {
+      this.showError = false;
+    }
+  }
 }

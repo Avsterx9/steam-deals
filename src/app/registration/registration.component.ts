@@ -1,4 +1,6 @@
 import {Component, OnInit} from "@angular/core";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {MustMatch} from "../exported-functions/MustMatch";
 import {RegistrationService} from "../services/registration.service";
 
 @Component({
@@ -6,39 +8,57 @@ import {RegistrationService} from "../services/registration.service";
   templateUrl: "./registration.component.html",
   styleUrls: ["./registration.component.sass"],
 })
-export class RegistrationComponent {
-  userName!: string;
-  firstName!: string;
-  lastName!: string;
-  email!: string;
-  password1!: string;
-  password2!: string;
+export class RegistrationComponent implements OnInit {
+  submitted: boolean = false;
 
-  errorMsg!: string;
-  showError: boolean = true;
+  regForm!: FormGroup;
 
-  constructor(private registrationService: RegistrationService) {}
+  constructor(private registrationService: RegistrationService, private fb: FormBuilder) {}
 
-  registerUser() {
-    this.registrationService
-      .registerNewUser(this.userName, this.email, this.firstName, this.lastName, this.password1)
-      .subscribe(
-        (res: any) => {
-          console.log(res);
-        },
-        (err: any) => {
-          this.showError = true;
-          console.log(err);
-        }
-      );
+  ngOnInit(): void {
+    this.regForm = this.fb.group(
+      {
+        userName: ["", Validators.required],
+        firstName: ["", Validators.required],
+        lastName: ["", Validators.required],
+        mail: ["", [Validators.required, Validators.email]],
+        password: ["", [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ["", [Validators.required]],
+      },
+      {
+        validator: MustMatch("password", "confirmPassword"),
+      }
+    );
   }
 
-  validatePasswords() {
-    if (this.password1 != this.password2) {
-      this.showError = true;
-      this.errorMsg = "Password are not the same";
-    } else {
-      this.showError = false;
+  get controls() {
+    return this.regForm.controls;
+  }
+
+  submit() {
+    this.submitted = true;
+
+    if (this.regForm.invalid) {
+      return;
     }
+
+    this.registerUser(
+      this.regForm.get("userName")?.value,
+      this.regForm.get("mail")?.value,
+      this.regForm.get("firstName")?.value,
+      this.regForm.get("lastName")?.value,
+      this.regForm.get("password")?.value
+    );
+  }
+
+  private registerUser(userName: string, email: string, firstName: string, lastName: string, password: string) {
+    this.registrationService.registerNewUser(userName, email, firstName, lastName, password).subscribe(
+      (res: any) => {
+        alert("New User has been successfully added! Now you can log in.");
+      },
+      (err: any) => {
+        alert("Registration Error! \n" + err.error.detail);
+      }
+    );
   }
 }

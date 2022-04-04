@@ -1,53 +1,77 @@
 <div class="registration-page-container">
   <div class="registration-form-container">
     <h1>Registration</h1>
-    <form>
+    <form [formGroup]="regForm">
       <div class="text-field">
-        <input type="text" [(ngModel)]="userName" name="userName" required />
+        <input type="text" name="userName" formControlName="userName" required />
         <span></span>
         <label>Username</label>
       </div>
 
+      <div class="error-container" *ngIf="controls['userName'].errors && submitted">
+        <div *ngIf="controls['userName'].errors['required']" class="error-hint">User name is required</div>
+      </div>
+
       <div class="text-field">
-        <input type="text" [(ngModel)]="firstName" name="firstName" required />
+        <input type="text" name="firstName" formControlName="firstName" required />
         <span></span>
         <label>First Name</label>
       </div>
 
+      <div class="error-container" *ngIf="controls['firstName'].errors && submitted">
+        <div *ngIf="controls['firstName'].errors['required']" class="error-hint">First name is required</div>
+      </div>
+
       <div class="text-field">
-        <input type="text" [(ngModel)]="lastName" name="lastName" required />
+        <input type="text" name="lastName" formControlName="lastName" required />
         <span></span>
         <label>Last Name</label>
       </div>
 
+      <div class="error-container" *ngIf="controls['lastName'].errors && submitted">
+        <div *ngIf="controls['lastName'].errors['required']" class="error-hint">Last name is required</div>
+      </div>
+
       <div class="text-field">
-        <input type="text" [(ngModel)]="email" name="email" required />
+        <input type="text" name="email" formControlName="mail" required />
         <span></span>
         <label>Email Address</label>
       </div>
 
+      <div class="error-container" *ngIf="controls['mail'].errors && submitted">
+        <div *ngIf="controls['mail'].errors['required']" class="error-hint">Email is required</div>
+        <div *ngIf="controls['mail'].errors['email']" class="error-hint">Email must be a valid email address</div>
+      </div>
+
       <div class="text-field">
-        <input type="password" [(ngModel)]="password1" name="password1" required />
+        <input type="password" name="password1" formControlName="password" required />
         <span></span>
         <label>Password</label>
       </div>
 
+      <div class="error-container" *ngIf="controls['password'].errors && submitted">
+        <div *ngIf="controls['password'].errors['required']" class="error-hint">Password is required</div>
+        <div *ngIf="controls['password'].errors['minLength']" class="error-hint">
+          Password must be at least 6 characters
+        </div>
+      </div>
+
       <div class="text-field">
-        <input
-          type="password"
-          [(ngModel)]="password2"
-          name="password2"
-          (ngModelChange)="validatePasswords()"
-          required
-        />
+        <input type="password" name="password2" formControlName="confirmPassword" required />
         <span></span>
         <label>Confirm Password</label>
       </div>
-      <div class="error_container">
-        <label class="error-msg" *ngIf="showError">{{ errorMsg }}</label>
+
+      <div class="error-container" *ngIf="controls['confirmPassword'].errors && submitted">
+        <div *ngIf="controls['confirmPassword'].errors['required']" class="error-hint" style="margin-bottom: 1em">
+          Password confirmation is required
+        </div>
+        <div *ngIf="controls['confirmPassword'].errors['mustMatch']" class="error-hint" style="margin-bottom: 1em">
+          Password are not matching
+        </div>
       </div>
 
-      <button class="submit-button" (click)="registerUser()">Sign up</button>
+      <button class="submit-button" (click)="submit()">Sign up</button>
     </form>
   </div>
 </div>

@@ -1,23 +1,26 @@
 <nav>
   <div class="nav-container">
     <h1>SteamDeals</h1>
+    <div class="nav-resp" [class.is-active]="check">
+      <div class="menu">
+        <ul>
+          <li><a href="/" class="is-active">Home</a></li>
+          <li><a href="#">Link1</a></li>
+          <li><a href="#">Link1</a></li>
+        </ul>
+      </div>
 
-    <div class="menu">
-      <a href="/" class="is-active">Home</a>
-      <a href="#">Link1</a>
-      <a href="#">Link2</a>
-    </div>
+      <div class="login-div">
+        <button class="login-btn" *ngIf="!isLogged">
+          <a href="/login">Log in</a>
+        </button>
 
-    <div class="login-div">
-      <button class="login-btn" *ngIf="!isLogged">
-        <a href="/login">Log in</a>
-      </button>
+        <button class="logout-btn" *ngIf="isLogged" (click)="logout()">Log out</button>
+      </div>
 
-      <button class="logout-btn" *ngIf="isLogged" (click)="logout()">Log out</button>
-    </div>
-
-    <div class="logged-user-panel" *ngIf="isLogged">
-      {{ userDetails["username"] }}
+      <div class="logged-user-panel" *ngIf="isLogged">
+        {{ userDetails["username"] }}
+      </div>
     </div>
 
     <div class="color-switcher">
@@ -32,7 +35,7 @@
       </label>
     </div>
 
-    <button class="hamburger" (click)="expandHamburger(hamburger)" #hamburger>
+    <button class="hamburger" [class.is-active]="check" (click)="dropMenu()">
       <span></span>
       <span></span>
       <span></span>

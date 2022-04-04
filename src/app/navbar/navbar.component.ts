@@ -13,6 +13,7 @@ export class NavbarComponent {
   isDark!: boolean;
   darkTheme = new DarkTheme();
   lightTheme = new LightTheme();
+  check: boolean = false;
 
   isLogged: boolean = false;
   userDetails: any;
@@ -34,8 +35,8 @@ export class NavbarComponent {
     this.checkIfUserIsLogged();
   }
 
-  expandHamburger(hamburger: HTMLButtonElement) {
-    hamburger.classList.toggle("is-active");
+  dropMenu() {
+    this.check = !this.check;
   }
 
   switchTheme() {

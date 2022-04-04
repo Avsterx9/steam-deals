@@ -15,7 +15,7 @@ export class RegistrationComponent {
   password2!: string;
 
   errorMsg!: string;
-  showError: boolean = false;
+  showError: boolean = true;
 
   constructor(private registrationService: RegistrationService) {}
 

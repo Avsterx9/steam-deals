@@ -3,20 +3,28 @@
     <h1>Login</h1>
     <form>
       <div class="text-field">
-        <input type="text" [(ngModel)]="userName" name="userName" required />
+        <input type="text" name="userName" required />
         <span></span>
         <label>Username</label>
       </div>
 
+      <div class="error-container" *ngIf="controls['userName'].errors && submitted">
+        <div *ngIf="controls['userName'].errors['required']" class="error-hint">Last name is required</div>
+      </div>
+
       <div class="text-field">
-        <input type="password" [(ngModel)]="userPassword" name="userPassword" required />
+        <input type="password" name="userPassword" required />
         <span></span>
         <label>Password</label>
       </div>
 
-      <button class="submit-button" (click)="loginUser()">Log in</button>
+      <div class="error-container" *ngIf="controls['password'].errors && submitted">
+        <div *ngIf="controls['password'].errors['required']" class="error-hint" style="margin-bottom: 1em">
+          Password is required
+        </div>
+      </div>
 
-      <h1 class="login-error-msg" *ngIf="inputError"></h1>
+      <button class="submit-button" (click)="submit()">Log in</button>
 
       <div class="registration-link">Don’t have an account? <a href="/registration">Sign up</a></div>
     </form>

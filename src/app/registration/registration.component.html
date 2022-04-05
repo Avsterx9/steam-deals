@@ -71,6 +71,12 @@
         </div>
       </div>
 
+      <div class="error-container" *ngIf="serverErrorStatus">
+        <div *ngIf="serverErrorStatus" class="error-hint" style="margin-bottom: 1em">
+          {{ serverErrorMsg }}
+        </div>
+      </div>
+
       <button class="submit-button" (click)="submit()">Sign up</button>
     </form>
   </div>

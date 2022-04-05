@@ -7,7 +7,7 @@ import {UserAuthenticationService} from "../services/user-authentication.service
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.sass"],
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   submitted: boolean = false;
   logForm!: FormGroup;
 

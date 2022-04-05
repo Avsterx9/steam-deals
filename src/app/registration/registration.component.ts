@@ -10,6 +10,8 @@ import {RegistrationService} from "../services/registration.service";
 })
 export class RegistrationComponent implements OnInit {
   submitted: boolean = false;
+  serverErrorStatus: boolean = false;
+  serverErrorMsg: string = "";
 
   regForm!: FormGroup;
 
@@ -57,7 +59,10 @@ export class RegistrationComponent implements OnInit {
         alert("New User has been successfully added! Now you can log in.");
       },
       (err: any) => {
-        alert("Registration Error! \n" + err.error.detail);
+        this.serverErrorStatus = true;
+        // alert("Registration Error!
+        this.serverErrorMsg = err.error.detail;
+        // \n" + err.error.detail);
       }
     );
   }

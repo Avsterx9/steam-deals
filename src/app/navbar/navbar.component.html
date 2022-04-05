@@ -10,10 +10,10 @@
 
     <div class="login-div">
       <button class="login-btn" *ngIf="!isLogged">
-        <a href="/login">Zaloguj</a>
+        <a href="/login">Log in</a>
       </button>
 
-      <button class="logout-btn" *ngIf="isLogged" (click)="logout()">Wyloguj</button>
+      <button class="logout-btn" *ngIf="isLogged" (click)="logout()">Log out</button>
     </div>
 
     <div class="logged-user-panel" *ngIf="isLogged">

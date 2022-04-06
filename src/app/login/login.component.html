@@ -1,19 +1,19 @@
 <div class="login-page-container">
   <div class="login-form-container">
     <h1>Login</h1>
-    <form>
+    <form [formGroup]="logForm">
       <div class="text-field">
-        <input type="text" name="userName" required />
+        <input type="text" name="username" formControlName="username" required />
         <span></span>
         <label>Username</label>
       </div>
 
-      <div class="error-container" *ngIf="controls['userName'].errors && submitted">
-        <div *ngIf="controls['userName'].errors['required']" class="error-hint">Last name is required</div>
+      <div class="error-container" *ngIf="controls['username'].errors && submitted">
+        <div *ngIf="controls['username'].errors['required']" class="error-hint">User name is required</div>
       </div>
 
       <div class="text-field">
-        <input type="password" name="userPassword" required />
+        <input type="password" name="password" formControlName="password" required />
         <span></span>
         <label>Password</label>
       </div>
@@ -21,6 +21,12 @@
       <div class="error-container" *ngIf="controls['password'].errors && submitted">
         <div *ngIf="controls['password'].errors['required']" class="error-hint" style="margin-bottom: 1em">
           Password is required
+        </div>
+      </div>
+
+      <div class="error-container" *ngIf="serverErrorStatus">
+        <div *ngIf="serverErrorStatus" class="error-hint" style="margin-bottom: 1em">
+          {{ serverErrorMsg }}
         </div>
       </div>
 

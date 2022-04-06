@@ -16,16 +16,7 @@ export class UserAuthenticationService {
     formData.append("username", userName);
     formData.append("password", userPassword);
 
-    this.http.post(this.backendURL + "/token", formData, {withCredentials: true}).subscribe(
-      (res: any) => {
-        console.log("Login Succes, Token: " + res.access_token);
-        window.location.reload();
-      },
-      (err) => {
-        console.log("Login Failed:");
-        console.log(err);
-      }
-    );
+    return this.http.post(this.backendURL + "/token", formData, {withCredentials: true});
   }
 
   getUserDetails() {

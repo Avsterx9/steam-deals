@@ -11,12 +11,15 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
   logForm!: FormGroup;
 
+  serverErrorStatus: boolean = false;
+  serverErrorMsg: string = "";
+
   constructor(private authenticationService: UserAuthenticationService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.logForm = this.fb.group({
-      userName: ["", Validators.required],
-      password: ["", [Validators.required]],
+      username: ["", Validators.required],
+      password: ["", Validators.required],
     });
   }
 
@@ -27,14 +30,25 @@ export class LoginComponent implements OnInit {
   submit() {
     this.submitted = true;
 
+    console.log(this.logForm);
+
     if (this.logForm.invalid) {
       return;
     }
 
-    this.loginUser(this.logForm.get("userName")?.value, this.logForm.get("password")?.value);
+    this.loginUser(this.logForm.get("username")?.value, this.logForm.get("password")?.value);
   }
 
   private loginUser(userName: string, password: string) {
-    this.authenticationService.loginUser(userName, password);
+    this.authenticationService.loginUser(userName, password).subscribe(
+      (res: any) => {
+        console.log("Login Succes, Token: " + res.access_token);
+        window.location.reload();
+      },
+      (err) => {
+        this.serverErrorStatus = true;
+        this.serverErrorMsg = err.error.detail;
+      }
+    );
   }
 }

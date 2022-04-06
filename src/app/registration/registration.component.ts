@@ -60,9 +60,7 @@ export class RegistrationComponent implements OnInit {
       },
       (err: any) => {
         this.serverErrorStatus = true;
-        // alert("Registration Error!
         this.serverErrorMsg = err.error.detail;
-        // \n" + err.error.detail);
       }
     );
   }

@@ -14,9 +14,9 @@
       </div>
 
       <div class="login-div">
-        <button class="login-btn" *ngIf="!isLogged">
-          <a href="/login">Log in</a>
-        </button>
+        <a href="/login">
+          <button class="login-btn" *ngIf="!isLogged">Log in</button>
+        </a>
 
         <button class="logout-btn" *ngIf="isLogged" (click)="logout()">Log out</button>
       </div>

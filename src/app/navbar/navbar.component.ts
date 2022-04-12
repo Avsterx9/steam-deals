@@ -51,6 +51,7 @@ export class NavbarComponent {
     document.documentElement.style.setProperty("--font-color", theme.fontColor);
     document.documentElement.style.setProperty("--background-color-light-version", theme.backgroundLight);
     document.documentElement.style.setProperty("--primary-color", theme.primaryColor);
+    document.documentElement.style.setProperty("--content-color", theme.contentColor);
   }
 
   checkIfUserIsLogged() {

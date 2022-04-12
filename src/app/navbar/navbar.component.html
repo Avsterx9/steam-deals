@@ -1,10 +1,13 @@
 <nav>
   <div class="nav-container">
-    <div class="header-logo">
+    <div class="header-logo" onclick="window.location='/'">
       <img class="logo" src="assets/steam_deals_logo.svg" />
-      <h1 class="logo-first">Steam</h1>
-      <h1 class="logo-second">Deals</h1>
+      <h1 class="logo-text">
+        <span style="font-weight: 200">Steam</span>
+        <span class="logo-color-part">Deals</span>
+      </h1>
     </div>
+
     <div class="nav-resp" [class.is-active]="check">
       <div class="menu">
         <ul>

@@ -10,6 +10,7 @@ import {NavbarComponent} from "./navbar/navbar.component";
 import {LoginComponent} from "./login/login.component";
 import {RegistrationComponent} from "./registration/registration.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {UserProfileComponent} from "./user-profile/user-profile.component";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     FooterComponent,
     LoginComponent,
     RegistrationComponent,
+    UserProfileComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [],

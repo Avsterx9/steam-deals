@@ -1,0 +1,3 @@
+[submodule "steam-deals-backend"]
+	path = steam-deals-backend
+	url = ../../rafit/steam-deals-backend.git

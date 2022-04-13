@@ -6,5 +6,14 @@ import {Component, OnInit} from "@angular/core";
   styleUrls: ["./homepage.component.sass"],
 })
 export class HomepageComponent {
-  constructor() {}
+  bannerDisplayed: boolean = false;
+
+  constructor() {
+    if (!localStorage.getItem("cookieBannerDisplayed")) this.bannerDisplayed = true;
+  }
+
+  hideCookieContainer() {
+    localStorage.setItem("cookieBannerDisplayed", "true");
+    this.bannerDisplayed = false;
+  }
 }

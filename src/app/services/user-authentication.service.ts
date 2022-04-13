@@ -20,7 +20,7 @@ export class UserAuthenticationService {
   }
 
   getUserDetails() {
-    return this.http.get(this.backendURL + "/me", {withCredentials: true});
+    return this.http.get(this.backendURL + "/me/info", {withCredentials: true});
   }
 
   logout() {

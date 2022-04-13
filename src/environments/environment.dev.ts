@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  backendURL: "http://nwta.eastus.cloudapp.azure.com:5555",
+  backendURL: "http://nwta.eastus.cloudapp.azure.com:5555/api/v1",
 };

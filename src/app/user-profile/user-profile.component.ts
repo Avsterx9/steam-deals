@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {UserAuthenticationService} from "../services/user-authentication.service";
+import {IUser} from "../userInterface";
 
 @Component({
   selector: "app-user-profile",
@@ -8,11 +9,15 @@ import {UserAuthenticationService} from "../services/user-authentication.service
   styleUrls: ["./user-profile.component.sass"],
 })
 export class UserProfileComponent implements OnInit {
+  userDetails!: IUser;
+
   constructor(private authenticationService: UserAuthenticationService, private router: Router) {}
 
   ngOnInit(): void {
     this.authenticationService.getUserDetails().subscribe(
-      (res: any) => {},
+      (res: IUser) => {
+        this.userDetails = res;
+      },
       (err) => {
         this.router.navigate(["/login"]);
       }

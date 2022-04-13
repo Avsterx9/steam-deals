@@ -1,1 +1,62 @@
-<p>user-profile works!</p>
+<div class="profile-container">
+  <div class="user-card">
+    <div class="profile-header">
+      <div class="avatar-container">
+        <div class="avatar">
+          <img src="assets/user-avatar.svg" />
+        </div>
+
+        <div class="avatar-header">
+          <h3>{{ userDetails.username.charAt(0).toUpperCase() + userDetails.username.slice(1) }}</h3>
+          <!--          <h3>{{userDetails.username}}</h3>-->
+        </div>
+      </div>
+
+      <div class="user-data-container">
+        <div class="property-container">
+          <div class="property-name">
+            <div class="prop-text">First Name</div>
+          </div>
+          <div class="property-value">
+            <div class="prop-val">
+              {{ userDetails.first_name }}
+            </div>
+          </div>
+        </div>
+
+        <div class="property-container">
+          <div class="property-name">
+            <div class="prop-text">Last Name</div>
+          </div>
+          <div class="property-value">
+            <div class="prop-val">
+              {{ userDetails.last_name }}
+            </div>
+          </div>
+        </div>
+
+        <div class="property-container">
+          <div class="property-name">
+            <div class="prop-text">Email</div>
+          </div>
+          <div class="property-value">
+            <div class="prop-val">
+              {{ userDetails.email }}
+            </div>
+          </div>
+        </div>
+
+        <div class="property-container">
+          <div class="property-name">
+            <div class="prop-text">Member since</div>
+          </div>
+          <div class="property-value">
+            <div class="prop-val">
+              {{ userDetails?.timestamp }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

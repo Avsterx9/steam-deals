@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
 import {environment} from "src/environments/environment";
+import {IUser} from "../userInterface";
 
 @Injectable({
   providedIn: "root",
@@ -20,7 +21,7 @@ export class UserAuthenticationService {
   }
 
   getUserDetails() {
-    return this.http.get(this.backendURL + "/me/info", {withCredentials: true});
+    return this.http.get<IUser>(this.backendURL + "/me/info", {withCredentials: true});
   }
 
   logout() {

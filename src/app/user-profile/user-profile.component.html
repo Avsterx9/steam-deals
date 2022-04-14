@@ -7,15 +7,23 @@
         </div>
 
         <div class="avatar-header">
-          <h3>{{ userDetails.username.charAt(0).toUpperCase() + userDetails.username.slice(1) }}</h3>
+          <h3>{{ userDetails?.username }}</h3>
         </div>
 
-        <div class="header-info-container" *ngIf="userDetails.verified === true" style="background-color: green">
+        <div class="header-info-container" *ngIf="userDetails?.verified === true" style="background-color: green">
           VERIFIED
         </div>
 
-        <div class="header-info-container" *ngIf="userDetails.verified !== true" style="background-color: red">
+        <div class="header-info-container" *ngIf="userDetails?.verified !== true" style="background-color: red">
           NOT VERIFIED
+        </div>
+
+        <div
+          class="header-info-container-resend"
+          *ngIf="userDetails?.verified !== true"
+          (click)="resendVerificationMail()"
+        >
+          RESEND
         </div>
       </div>
 
@@ -26,7 +34,7 @@
           </div>
           <div class="property-value">
             <div class="prop-val">
-              {{ userDetails.first_name }}
+              {{ userDetails?.first_name }}
             </div>
           </div>
         </div>
@@ -37,7 +45,7 @@
           </div>
           <div class="property-value">
             <div class="prop-val">
-              {{ userDetails.last_name }}
+              {{ userDetails?.last_name }}
             </div>
           </div>
         </div>
@@ -48,7 +56,7 @@
           </div>
           <div class="property-value">
             <div class="prop-val">
-              {{ userDetails.email }}
+              {{ userDetails?.email }}
             </div>
           </div>
         </div>

@@ -35,4 +35,8 @@ export class UserAuthenticationService {
       }
     );
   }
+
+  sendVerificationMail() {
+    return this.http.get(this.backendURL + "/resendVerificationMail", {withCredentials: true});
+  }
 }

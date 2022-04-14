@@ -23,4 +23,15 @@ export class UserProfileComponent implements OnInit {
       }
     );
   }
+
+  resendVerificationMail() {
+    this.authenticationService.sendVerificationMail().subscribe(
+      (res: any) => {
+        alert(res.detail);
+      },
+      (err) => {
+        alert(err.phrase);
+      }
+    );
+  }
 }

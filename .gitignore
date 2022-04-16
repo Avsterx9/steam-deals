@@ -36,3 +36,4 @@ Thumbs.db
 # Cypress
 cypress/screenshots/
 cypress/videos/
+cypress/report.xml

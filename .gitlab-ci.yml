@@ -20,19 +20,11 @@ variables:
   TAG_COMMIT: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:$CI_COMMIT_SHORT_SHA
 
 .configuration:
-  image: ubuntu:20.04
+  image: $CI_REGISTRY_IMAGE/cicd-image
   before_script:
-    - apt-get update -qq &&
-    - DEBIAN_FRONTEND=noninteractive
-      apt-get install -y
-      curl
-      npm
-    - npm install -g npm@latest
-    - npm cache clean -f
-    - npm install -g n
-    - n stable
-    - hash -r
-    - node -v && npm -v
+    - npm ci
+    - ng --version
+    - npm list
 
 #==============================| TESTS AND CODE ANALYSIS |==============================
 
@@ -42,7 +34,6 @@ Lint code with ESLint:
   allow_failure: true
   script:
     - echo [ Running ESlint ]
-    - npm install @angular-eslint/eslint-plugin@latest --save-dev
     - npx eslint .
 
 Check code with Prettier:
@@ -51,7 +42,6 @@ Check code with Prettier:
   allow_failure: true
   script:
     - echo [ Checking with Prettier ]
-    - npm install --save-dev --save-exact prettier
     - npx prettier --check .
 
 #==============================| BUILD |==============================

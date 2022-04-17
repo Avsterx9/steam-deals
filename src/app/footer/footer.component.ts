@@ -15,7 +15,7 @@ export class FooterComponent {
   }
 
   private getCurrentApiVersion() {
-    this.http.get(environment.backendURL).subscribe(
+    this.http.get(environment.backendURL + "/").subscribe(
       (response: any) => {
         this.apiVersion = response.version;
       },

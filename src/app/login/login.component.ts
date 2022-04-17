@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.loginUser(userName, password).subscribe(
       (res: any) => {
         console.log("Login Succes, Token: " + res.access_token);
-        window.location.reload();
+        window.location.href = "/";
       },
       (err) => {
         this.serverErrorStatus = true;

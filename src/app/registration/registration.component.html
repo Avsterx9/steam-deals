@@ -51,7 +51,7 @@
 
       <div class="error-container" *ngIf="controls['password'].errors && submitted">
         <div *ngIf="controls['password'].errors['required']" class="error-hint">Password is required</div>
-        <div *ngIf="controls['password'].errors['minLength']" class="error-hint">
+        <div *ngIf="controls['password'].hasError('minlength')" class="error-hint">
           Password must be at least 6 characters
         </div>
       </div>

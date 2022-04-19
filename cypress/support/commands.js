@@ -1,6 +1,6 @@
 const {faker} = require("@faker-js/faker");
 
-function createRandomUSer() {
+function createRandomUser() {
     const uniqueFirstName = faker.unique(faker.name.firstName);
     const uniqueLastName = faker.unique(faker.name.lastName);
     const userName = `${uniqueFirstName}_${uniqueLastName}_${generate_randomID()}`.toLowerCase();
@@ -40,4 +40,12 @@ Cypress.Commands.add('login', (user) => {
     cy.contains("div[class='logged-user-panel']", user.userName);
 });
 
-Cypress.Commands.add('createRandomUSer', createRandomUSer);
+Cypress.Commands.add('createRandomUser', createRandomUser);
+
+Cypress.Commands.overwrite('type', (originalFn, subject, str, options) => {
+  if (str !== '' && str !== null) {
+    return originalFn(subject, str, options)
+  }
+
+  return subject
+})

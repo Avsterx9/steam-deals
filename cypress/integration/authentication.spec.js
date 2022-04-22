@@ -1,4 +1,5 @@
 const {faker} = require("@faker-js/faker");
+const {clearLine} = require("readline");
 
 describe('Registration', () => {
 
@@ -12,7 +13,7 @@ describe('Registration', () => {
 describe('Registration unsuccessfull', () => {
 
     const properties = [
-        ['userName', 'User name is required'],
+        ['username', 'User name is required'],
         ['firstName', 'First name is required'],
         ['lastName', 'Last name is required'],
         ['email', 'Email is required'],
@@ -60,6 +61,34 @@ describe('Registration unsuccessfull', () => {
         cy.get("input[name='password1']").type('password');
         cy.get("input[name='password2']").type('pas2');
         cy.contains("div[class='error-hint']", 'Password are not matching');
+    })
+
+    it('register with occupied email', () => {
+        cy.createRandomUser().then(user => {
+            cy.register(user);
+            cy.register(user);
+            cy.contains("div[class='error-hint']", 'Email `' + user.email + '` is already taken');
+        });
+    })
+
+    it('register with occupied username', () => {
+        cy.createRandomUser().then(user => {
+            cy.register(user);
+            cy.visit('/');
+            cy.contains("button", "Log in").click();
+            cy.contains("a", "Sign up").click();
+            cy.get("input[name='userName']").type(user.username);
+            cy.get("input[name='firstName']").type(user.firstName);
+            cy.get("input[name='lastName']").type(user.lastName);
+
+            cy.generateRandomID().then(randomID => {
+                cy.get("input[name='email']").type(user.email + randomID);
+                cy.get("input[name='password1']").type(user.password);
+                cy.get("input[name='password2']").type(user.password);
+                cy.contains("button", "Sign up").click();
+                cy.contains("div[class='error-hint']", 'Username `' + user.username + '` is already taken');
+            })
+        });
     })
 })
 

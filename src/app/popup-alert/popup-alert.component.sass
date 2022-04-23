@@ -1,0 +1,57 @@
+
+.popup-container
+  position: fixed
+  bottom: 0
+  right: 0
+  left: 0
+  top: 0
+  background-color: rgba(0,0,0, .5)
+  color: var(--font-color)
+  padding: 10px 25px
+  z-index: 100
+
+.popup-banner
+  max-width: 400px
+  margin: 30vh auto
+  background-color: var(--background-color-dark-version)
+  padding: 30px
+  box-shadow: 2px 2px 5px black
+
+.popup-banner h2
+  text-align: center
+
+.popup-banner p
+  text-align: center
+  padding: 0 10px
+  line-height: 1.3em
+
+.button-div
+  margin: 30px auto 0 auto
+  width: 80px
+
+.popup-btn
+  background-color: var(--primary-color)
+  cursor: pointer
+  border-radius: .1em
+  font-weight: bold
+  width: 6em
+  height: 3em
+  border: none
+  margin: 0 auto
+  box-shadow: 2px 2px 5px black
+
+.popup-btn:hover
+  background-color: var(--background-color-light-version)
+  border: 1px solid var(--primary-color)
+  transition: 0.2s
+
+.popup-logo
+  width: 4em
+  height: 4em
+  margin: 0 auto
+
+.popup-logo ::ng-deep img
+  width: 100%
+
+.popup-logo:empty
+  display: none

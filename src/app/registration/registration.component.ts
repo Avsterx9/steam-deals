@@ -12,7 +12,8 @@ export class RegistrationComponent implements OnInit {
   submitted: boolean = false;
   serverErrorStatus: boolean = false;
   serverErrorMsg: string = "";
-
+  registrationSucceed: boolean = false;
+  redirectUrl: string = "/login";
   regForm!: FormGroup;
 
   constructor(private registrationService: RegistrationService, private fb: FormBuilder) {}
@@ -56,7 +57,8 @@ export class RegistrationComponent implements OnInit {
   private registerUser(userName: string, email: string, firstName: string, lastName: string, password: string) {
     this.registrationService.registerNewUser(userName, email, firstName, lastName, password).subscribe(
       (res: any) => {
-        alert("New User has been successfully added! Now you can log in.");
+        this.registrationSucceed = true;
+        console.log(this.registrationSucceed);
       },
       (err: any) => {
         this.serverErrorStatus = true;

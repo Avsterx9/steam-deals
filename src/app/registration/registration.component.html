@@ -80,4 +80,10 @@
       <button class="submit-button" (click)="submit()">Sign up</button>
     </form>
   </div>
+  <app-popup-alert *ngIf="registrationSucceed" [redirectUrl]="redirectUrl">
+    <img img src="assets/user-avatar.svg" alt="avatar" />
+    <span title>Successful!</span>
+    <span content>Your registration was successful! <br />Check your email for your account activation link.</span>
+    <span btn-text>OK</span>
+  </app-popup-alert>
 </div>

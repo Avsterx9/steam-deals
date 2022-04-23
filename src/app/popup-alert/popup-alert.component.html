@@ -1,1 +1,20 @@
-<p>popup-alert works!</p>
+<ng-container *ngIf="bannerDisplayed">
+  <div class="popup-container">
+    <div class="popup-banner">
+      <div class="popup-logo">
+        <ng-content select="[img]"></ng-content>
+      </div>
+      <h2>
+        <ng-content select="[title]"></ng-content>
+      </h2>
+      <p>
+        <ng-content select="[content]"></ng-content>
+      </p>
+      <div class="button-div">
+        <button class="popup-btn" (click)="hidePopup()">
+          <ng-content select="[btn-text]"></ng-content>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>

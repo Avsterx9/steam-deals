@@ -11,6 +11,7 @@ import {LoginComponent} from "./login/login.component";
 import {RegistrationComponent} from "./registration/registration.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserProfileComponent} from "./user-profile/user-profile.component";
+import {PopupAlertComponent} from "./popup-alert/popup-alert.component";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {UserProfileComponent} from "./user-profile/user-profile.component";
     LoginComponent,
     RegistrationComponent,
     UserProfileComponent,
+    PopupAlertComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [],

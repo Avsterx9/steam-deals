@@ -133,6 +133,7 @@ input[type="checkbox"]
   display: block
   width: 40px
   height: 20px
+  margin-left: 1em
   background: var(--background-color-dark-version)
   cursor: pointer
   border-radius: 20px
@@ -180,7 +181,6 @@ input[type="checkbox"]:checked ~ .color-check:after
   align-items: center
   padding: 10px
   font-weight: bold
-  margin-right: 1em
   border-bottom: 3px solid var(--primary-color)
 
 .login-btn
@@ -272,3 +272,10 @@ input[type="checkbox"]:checked ~ .color-check:after
 
   .nav-resp
     top: 78px
+
+.logged-user
+  text-decoration: none
+
+.logged-user:hover
+  background-color: var(--background-color-dark-version)
+  cursor: pointer

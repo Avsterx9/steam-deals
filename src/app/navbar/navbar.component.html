@@ -13,7 +13,6 @@
         <ul>
           <li><a href="/" class="is-active">Home</a></li>
           <li><a href="#">Link1</a></li>
-          <li><a href="/user">User</a></li>
         </ul>
       </div>
 
@@ -25,9 +24,11 @@
         <button class="logout-btn" *ngIf="isLogged" (click)="logout()">Log out</button>
       </div>
 
-      <div class="logged-user-panel" *ngIf="isLogged">
-        {{ userDetails["username"] }}
-      </div>
+      <a href="/user" class="logged-user">
+        <div class="logged-user-panel" *ngIf="isLogged">
+          {{ userDetails["username"] }}
+        </div>
+      </a>
     </div>
 
     <div class="color-switcher">

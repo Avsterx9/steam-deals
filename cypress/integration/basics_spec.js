@@ -7,6 +7,7 @@ describe("Basics", () => {
 describe("Authentication", () => {
   it("registers an user", () => {
     cy.visit("http://0.0.0.0:8080/");
+    cy.contains("button[class='cookie-btn']", "Accept").click();
     cy.contains("button", "Log in").click();
     cy.contains("a", "Sign up").click();
     cy.get("input[name='userName']").type("testaccount");
@@ -20,6 +21,7 @@ describe("Authentication", () => {
 
   it("logs an user in", () => {
     cy.visit("http://0.0.0.0:8080/");
+    cy.contains("button[class='cookie-btn']", "Accept").click();
     cy.contains("button", "Log in").click();
     cy.get("input[name='username']").type("testaccount");
     cy.get("input[name='password']").type("testaccount");

@@ -15,4 +15,10 @@ export class GamesService {
 
     return this.http.get(this.backendURL + "/top100in2weeks/random", {withCredentials: true, params});
   }
+
+  public getTopGames(skipAmount: number, amount: number) {
+    let params = new HttpParams().set("skip", skipAmount).set("amount", amount);
+
+    return this.http.get(this.backendURL + "/top100in2weeks", {withCredentials: true, params});
+  }
 }

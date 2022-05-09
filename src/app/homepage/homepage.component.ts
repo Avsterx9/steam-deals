@@ -14,24 +14,43 @@ enum OpinionType {
 })
 export class HomepageComponent {
   OpinionType = OpinionType;
-  public randomGames: IGame[] = [];
-  bannerDisplayed: boolean = false;
-
+  public games: IGame[] = [];
+  bannerDisplayed = false;
+  isRandomChecked: boolean = true;
+  titleText: string = "";
+  gameDisplayMode: string = "Random";
 
   constructor(private gamesService: GamesService) {
     if (!localStorage.getItem("cookieBannerDisplayed")) this.bannerDisplayed = true;
     this.getRandomGames();
   }
 
-   hideCookieContainer() {
+  hideCookieContainer() {
     localStorage.setItem("cookieBannerDisplayed", "true");
     this.bannerDisplayed = false;
   }
 
   getRandomGames() {
+    this.titleText = "What's new?";
+    this.gameDisplayMode = "Random";
+
     this.gamesService.getRandomGames(10).subscribe(
       (res: any) => {
-        this.randomGames = res;
+        this.games = res;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  getTopGames() {
+    this.titleText = "Top Games";
+    this.gameDisplayMode = "Trending";
+
+    this.gamesService.getTopGames(0, 10).subscribe(
+      (res: any) => {
+        this.games = res;
       },
       (err) => {
         console.log(err);
@@ -56,5 +75,16 @@ export class HomepageComponent {
     positive.children[0].style.display = "none";
     negative.style.width = `${this.getOpinionPercent(game, OpinionType.NEGATIVE)}%`;
     negative.children[0].style.display = "none";
+  }
+
+  switchGames() {
+    this.isRandomChecked = !this.isRandomChecked;
+
+    if (this.isRandomChecked) {
+      this.getRandomGames();
+      return;
+    }
+    this.getTopGames();
+    return;
   }
 }

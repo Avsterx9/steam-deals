@@ -6,16 +6,27 @@
   <div class="content-box">
     <div class="new-games-header">
       <div class="game-box-header">
-        <h1>What's new?</h1>
+        <p class="header-title">{{ titleText }}</p>
       </div>
 
       <div class="games-display-options">
-        <button class="games-display-btn" (click)="getRandomGames()">Trending</button>
-        <button class="games-display-btn">Random</button>
+        <div class="game-display-switch">
+          <label>
+            <input
+              [attr.checked]="isRandomChecked ? true : null"
+              type="checkbox"
+              class="game-display-switch"
+              (click)="switchGames()"
+            />
+            <span class="game-display-check">
+              <p>{{ gameDisplayMode }}</p>
+            </span>
+          </label>
+        </div>
       </div>
     </div>
 
-    <div class="game-box" *ngFor="let game of randomGames">
+    <div class="game-box" *ngFor="let game of games">
       <div class="game-image">
         <img src="{{ game.header_image }}" />
       </div>

@@ -31,10 +31,10 @@ export class HomepageComponent {
   }
 
   getRandomGames() {
-    this.titleText = "What's new?";
+    this.titleText = "Check one of those games!";
     this.gameDisplayMode = "Random";
 
-    this.gamesService.getRandomGames(10).subscribe(
+    this.gamesService.getRandomGames(20).subscribe(
       (res: any) => {
         this.games = res;
       },
@@ -48,7 +48,7 @@ export class HomepageComponent {
     this.titleText = "Top Games";
     this.gameDisplayMode = "Trending";
 
-    this.gamesService.getTopGames(0, 10).subscribe(
+    this.gamesService.getTopGames(0, 20).subscribe(
       (res: any) => {
         this.games = res;
       },

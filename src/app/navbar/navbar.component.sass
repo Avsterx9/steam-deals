@@ -131,8 +131,8 @@ input[type="checkbox"]
   top: 20%
   position: relative
   display: block
-  width: 40px
-  height: 20px
+  width: 60px
+  height: 25px
   margin-left: 1em
   background: var(--background-color-dark-version)
   cursor: pointer
@@ -149,13 +149,13 @@ input[type="checkbox"]:checked ~ .color-check
   top: 2px
   left: 2px
   background: white
-  width: 16px
-  height: 16px
+  width: 21px
+  height: 21px
   border-radius: 50%
   transition: 0.5s
 
 input[type="checkbox"]:checked ~ .color-check:before
-  transform: translateX(-50px)
+  transform: translateX(-70px)
 
 .color-check:after
   content: ''
@@ -163,11 +163,19 @@ input[type="checkbox"]:checked ~ .color-check:before
   top: 2px
   left: 2px
   background: var(--primary-color)
-  width: 16px
-  height: 16px
+  width: 21px
+  height: 21px
   border-radius: 50%
   transition: 0.5s
-  transform: translateX(50px)
+  transform: translateX(70px)
+
+.color-check p
+  font-size: 9px
+  color: #8a8989
+  text-align: right
+  margin-top: 0.8em
+  margin-right: 1em
+  transition: 0.2s
 
 input[type="checkbox"]:checked ~ .color-check:after
   transform: translateX(0px)

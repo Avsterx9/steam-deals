@@ -17,6 +17,7 @@ export class NavbarComponent {
 
   isLogged: boolean = false;
   userDetails: any;
+  themeMode: string = "";
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -25,6 +26,7 @@ export class NavbarComponent {
     let theme = localStorageService.getAndParse("theme");
     if (theme) {
       this.isDark = theme.isDark;
+      this.switchThemeModeTitle();
     } else {
       theme = this.darkTheme;
       localStorageService.update("theme", theme);
@@ -41,9 +43,18 @@ export class NavbarComponent {
 
   switchTheme() {
     this.isDark = !this.isDark;
+    this.switchThemeModeTitle();
     let theme = this.isDark ? this.darkTheme : this.lightTheme;
     this.localStorageService.update("theme", theme);
     this.setColorVariables(theme);
+  }
+
+  switchThemeModeTitle() {
+    if (this.isDark) {
+      this.themeMode = "Dark";
+    } else {
+      this.themeMode = "Light";
+    }
   }
 
   setColorVariables(theme: Theme) {

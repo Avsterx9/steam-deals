@@ -33,7 +33,8 @@
       <div class="game-details">
         <div class="data-header">
           <div class="game-name-box">
-            <h3>{{ game.name }}</h3>
+            <h3 *ngIf="game.name.length > 35">{{ game.name.substring(0, 35) }}..</h3>
+            <h3 *ngIf="game.name.length < 35">{{ game.name }}</h3>
           </div>
           <div class="game-owners-box">
             <p>Owners: {{ game.owners.lower_bound }} - {{ game.owners.upper_bound }}</p>
@@ -41,8 +42,10 @@
         </div>
 
         <div class="dev-data-box">
-          <p>Developers: {{ game.developers }}</p>
-          <p>Publishers: {{ game.publishers }}</p>
+          <p *ngIf="game.developers.length > 1">Developers: {{ game.developers[0] }}..</p>
+          <p *ngIf="game.developers.length === 1">Developers: {{ game.developers[0] }}</p>
+          <p *ngIf="game.publishers.length > 1">Publishers: {{ game.publishers[0] }}..</p>
+          <p *ngIf="game.publishers.length === 1">Publishers: {{ game.publishers[0] }}</p>
         </div>
 
         <div class="bottom-data-box">

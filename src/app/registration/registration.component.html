@@ -86,4 +86,10 @@
     <span content>Your registration was successful! <br />Check your email for your account activation link.</span>
     <span btn-text>OK</span>
   </app-popup-alert>
+  <app-popup-alert *ngIf="serverErrorStatus">
+    <img img src="assets/error.svg" alt="error-icon" />
+    <span title>Warning!</span>
+    <span content>{{ serverErrorMsg }}</span>
+    <span btn-text>OK</span>
+  </app-popup-alert>
 </div>

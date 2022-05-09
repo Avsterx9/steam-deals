@@ -1,4 +1,4 @@
-import {Component, Input, Output} from "@angular/core";
+import {Component, Input} from "@angular/core";
 
 @Component({
   selector: "app-popup-alert",
@@ -7,7 +7,6 @@ import {Component, Input, Output} from "@angular/core";
 })
 export class PopupAlertComponent {
   bannerDisplayed: boolean = true;
-
   @Input()
   redirectUrl: string = "";
 

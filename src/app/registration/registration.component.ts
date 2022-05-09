@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Output} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MustMatch} from "../exported-functions/MustMatch";
 import {RegistrationService} from "../services/registration.service";
@@ -40,6 +40,7 @@ export class RegistrationComponent implements OnInit {
 
   submit() {
     this.submitted = true;
+    this.serverErrorStatus = false;
 
     if (this.regForm.invalid) {
       return;
@@ -58,7 +59,6 @@ export class RegistrationComponent implements OnInit {
     this.registrationService.registerNewUser(userName, email, firstName, lastName, password).subscribe(
       (res: any) => {
         this.registrationSucceed = true;
-        console.log(this.registrationSucceed);
       },
       (err: any) => {
         this.serverErrorStatus = true;

@@ -27,9 +27,14 @@
     </div>
 
     <div class="game-box" *ngFor="let game of games">
+      <div class="game-index">
+        <p>#{{ game.index + 1 }}</p>
+      </div>
+
       <div class="game-image">
         <img src="{{ game.header_image }}" />
       </div>
+
       <div class="game-details">
         <div class="data-header">
           <div class="game-name-box">

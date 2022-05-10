@@ -43,7 +43,8 @@
           </div>
           <div class="game-owners-box">
             <p>
-              <b>Owners:</b> <i>{{ game.owners.lower_bound }} - {{ game.owners.upper_bound }}</i>
+              <b>Owners:</b>
+              <i>{{ abbreviateNumber(game.owners.lower_bound) }} - {{ abbreviateNumber(game.owners.upper_bound) }}</i>
             </p>
           </div>
         </div>

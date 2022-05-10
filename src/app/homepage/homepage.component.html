@@ -54,6 +54,15 @@
           <div class="price-info">
             <p *ngIf="game.price.final === 0">FREE</p>
             <p *ngIf="game.price.final !== 0" style="color: var(--font-color)">${{ game.price.final }}</p>
+
+            <div *ngIf="game.price.discount !== 0 && game.price.discount !== null" class="price-discount">
+              <!--              <p>{{game.price.discount.toFixed()}}%</p>-->
+              <ul class="tags">
+                <li>
+                  <a href="#">-{{ game.price.discount.toFixed() }}%</a>
+                </li>
+              </ul>
+            </div>
           </div>
 
           <div class="opinion-info">

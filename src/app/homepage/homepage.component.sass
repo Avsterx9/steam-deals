@@ -240,12 +240,73 @@ input[type="checkbox"]:checked ~ .game-display-check:after
   height: 100%
 
 .price-info p
+  float: left
   margin-top: 0.9em
+  display: inline-block
+
+.tags
+
+  margin: 0
+  padding: 0
+  list-style: none
+
+  a
+    float: left
+    top: 40%
+    margin-left: 20px
+    padding: 0 10px 0 12px
+    background: #b60c0c
+    color: #fff
+    text-decoration: none
+    border-bottom-right-radius: 4px
+    border-top-right-radius: 4px
+
+    &:before
+      content: ""
+      float: left
+      position: absolute
+      top: 0
+      left: -12px
+      width: 0
+      height: 0
+      border-color: transparent #b60c0c transparent transparent
+      border-style: solid
+      border-width: 12px 12px 14px 0
+
+    &:after
+      content: ""
+      position: absolute
+      top: 10px
+      left: 0
+      float: left
+      width: 4px
+      height: 4px
+      border-radius: 2px
+      background: #fff
+
+    &:hover
+      background: #555
+
+      &:before
+        border-color: transparent #555 transparent transparent
+
+.tags li, .tags a
+  float: left
+  height: 26px
+  line-height: 24px
+  position: relative
+  font-size: 14px
+
+.price-discount
+  float: left
+  width: 10%
+  margin-right: 2.3em
 
 .opinion-info
   height: 70%
   float: left
-  width: 50%
+  width: 40%
+  margin-left: 3em
   margin-top: 0.7em
   border-radius: 0.2em
   color: white
@@ -304,4 +365,3 @@ input[type="checkbox"]:checked ~ .game-display-check:after
   border: 1px solid var(--primary-color)
   cursor: pointer
   transition: 0.2s
-

@@ -18,8 +18,9 @@ function generate_randomID() {
   return faker.datatype.uuid().split("-")[0];
 }
 
-Cypress.Commands.add("register", (user) => {
+Cypress.Commands.add("register", (user, cookiesAccepted = false) => {
   cy.visit("/");
+  if (!cookiesAccepted) cy.contains("button[class='cookie-btn']", "Accept").click();
   cy.contains("button", "Log in").click();
   cy.contains("a", "Sign up").click();
   cy.get("input[name='userName']").type(user.username);
@@ -31,8 +32,9 @@ Cypress.Commands.add("register", (user) => {
   cy.contains("button", "Sign up").click();
 });
 
-Cypress.Commands.add("login", (user) => {
+Cypress.Commands.add("login", (user, cookiesAccepted = false) => {
   cy.visit("/");
+  if (!cookiesAccepted) cy.contains("button[class='cookie-btn']", "Accept").click();
   cy.contains("button", "Log in").click();
   cy.get("input[name='username']").type(user.username);
   cy.get("input[name='password']").type(user.password);

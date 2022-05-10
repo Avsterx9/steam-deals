@@ -32,6 +32,7 @@ describe("Registration unsuccessfull", () => {
 
   it("register with nothing typed", () => {
     cy.visit("/");
+    cy.contains("button[class='cookie-btn']", "Accept").click();
     cy.contains("button", "Log in").click();
     cy.contains("a", "Sign up").click();
     cy.contains("button", "Sign up").click();
@@ -45,6 +46,7 @@ describe("Registration unsuccessfull", () => {
 
   it("register with too short password", () => {
     cy.visit("/");
+    cy.contains("button[class='cookie-btn']", "Accept").click();
     cy.contains("button", "Log in").click();
     cy.contains("a", "Sign up").click();
     cy.contains("button", "Sign up").click();
@@ -54,6 +56,7 @@ describe("Registration unsuccessfull", () => {
 
   it("register with invalid password confirmation", () => {
     cy.visit("/");
+    cy.contains("button[class='cookie-btn']", "Accept").click();
     cy.contains("button", "Log in").click();
     cy.contains("a", "Sign up").click();
     cy.contains("button", "Sign up").click();
@@ -65,8 +68,8 @@ describe("Registration unsuccessfull", () => {
   it("register with occupied email", () => {
     cy.createRandomUser().then((user) => {
       cy.register(user);
-      cy.register(user);
-      cy.contains("div[class='error-hint']", "Email `" + user.email + "` is already taken");
+      cy.register(user, true);
+      cy.contains("div[class='popup-container']", "Email `" + user.email + "` is already taken");
     });
   });
 
@@ -85,7 +88,7 @@ describe("Registration unsuccessfull", () => {
         cy.get("input[name='password1']").type(user.password);
         cy.get("input[name='password2']").type(user.password);
         cy.contains("button", "Sign up").click();
-        cy.contains("div[class='error-hint']", "Username `" + user.username + "` is already taken");
+        cy.contains("div[class='popup-container']", "Username `" + user.username + "` is already taken");
       });
     });
   });
@@ -95,7 +98,7 @@ describe("Login", () => {
   it("login successfully", () => {
     cy.createRandomUser().then((user) => {
       cy.register(user);
-      cy.login(user);
+      cy.login(user, true);
     });
   });
 });

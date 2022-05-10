@@ -63,7 +63,10 @@
               (mouseenter)="mouseEnter(positive)"
               (mouseleave)="mouseLeave(game, positive, negative)"
             >
-              <p>{{ getOpinionPercent(game, OpinionType.POSITIVE) }}%</p>
+              <p>
+                {{ getOpinionPercent(game, OpinionType.POSITIVE) }}%
+                <span style="color: #c2c2c2">({{ game.positive }} votes)</span>
+              </p>
             </div>
             <div
               class="negative-opinions"
@@ -73,7 +76,10 @@
               (mouseenter)="mouseEnter(negative)"
               (mouseleave)="mouseLeave(game, positive, negative)"
             >
-              <p>{{ getOpinionPercent(game, OpinionType.NEGATIVE) }}%</p>
+              <p>
+                {{ getOpinionPercent(game, OpinionType.NEGATIVE) }}%
+                <span style="color: #c2c2c2">({{ game.negative }} votes)</span>
+              </p>
             </div>
           </div>
 
@@ -83,7 +89,7 @@
         </div>
       </div>
     </div>
-     <ng-container *ngIf="bannerDisplayed">
+    <ng-container *ngIf="bannerDisplayed">
       <div class="cookie-container">
         <div class="cookie-banner">
           <div class="cookie-logo">

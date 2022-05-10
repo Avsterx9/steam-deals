@@ -67,14 +67,17 @@ export class HomepageComponent {
 
   mouseEnter(div: any) {
     div.style.width = "100%";
-    div.children[0].style.display = "block";
+    div.children[0].style.visibility = "visible";
+    div.children[0].style.opacity = 1;
   }
 
   mouseLeave(game: IGame, positive: any, negative: any) {
     positive.style.width = `${this.getOpinionPercent(game, OpinionType.POSITIVE)}%`;
-    positive.children[0].style.display = "none";
+    positive.children[0].style.visibility = "hidden";
+    positive.children[0].style.opacity = 0;
     negative.style.width = `${this.getOpinionPercent(game, OpinionType.NEGATIVE)}%`;
-    negative.children[0].style.display = "none";
+    negative.children[0].style.visibility = "hidden";
+    negative.children[0].style.opacity = 0;
   }
 
   switchGames() {

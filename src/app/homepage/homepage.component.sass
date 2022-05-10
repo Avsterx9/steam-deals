@@ -265,20 +265,14 @@ input[type="checkbox"]:checked ~ .game-display-check:after
   background-color: green
   border-radius: 0.2em 0 0 0.2em
 
-.positive-opinions:hover
+.positive-opinions:hover, .negative-opinions:hover
   transition: 0.2s
   border-radius: 0.2em
 
-.negative-opinions:hover
-  transition: 0.2s
-  border-radius: 0.2em
-
-.negative-opinions p
-  display: none
-  margin: 0.4em 0 0
-
-.positive-opinions p
-  display: none
+.negative-opinions p, .positive-opinions p
+  visibility: hidden
+  opacity: 0
+  transition: visibility 0s, opacity .5s linear
   margin: 0.4em 0 0
 
 .go-to-details-btn

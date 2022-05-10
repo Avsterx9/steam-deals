@@ -37,15 +37,17 @@
             <h3 *ngIf="game.name.length < 35">{{ game.name }}</h3>
           </div>
           <div class="game-owners-box">
-            <p>Owners: {{ game.owners.lower_bound }} - {{ game.owners.upper_bound }}</p>
+            <p>
+              <b>Owners:</b> <i>{{ game.owners.lower_bound }} - {{ game.owners.upper_bound }}</i>
+            </p>
           </div>
         </div>
 
         <div class="dev-data-box">
-          <p *ngIf="game.developers.length > 1">Developers: {{ game.developers[0] }}..</p>
-          <p *ngIf="game.developers.length === 1">Developers: {{ game.developers[0] }}</p>
-          <p *ngIf="game.publishers.length > 1">Publishers: {{ game.publishers[0] }}..</p>
-          <p *ngIf="game.publishers.length === 1">Publishers: {{ game.publishers[0] }}</p>
+          <p *ngIf="game.developers.length > 1"><b>Developers:</b> {{ game.developers[0] }}..</p>
+          <p *ngIf="game.developers.length === 1"><b>Developers:</b> {{ game.developers[0] }}</p>
+          <p *ngIf="game.publishers.length > 1"><b>Publishers:</b> {{ game.publishers[0] }}..</p>
+          <p *ngIf="game.publishers.length === 1"><b>Publishers:</b> {{ game.publishers[0] }}</p>
         </div>
 
         <div class="bottom-data-box">

@@ -12,6 +12,7 @@ import {RegistrationComponent} from "./registration/registration.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserProfileComponent} from "./user-profile/user-profile.component";
 import {PopupAlertComponent} from "./popup-alert/popup-alert.component";
+import {GameDetailsComponent} from "./game-details/game-details.component";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {PopupAlertComponent} from "./popup-alert/popup-alert.component";
     RegistrationComponent,
     UserProfileComponent,
     PopupAlertComponent,
+    GameDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [],

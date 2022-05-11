@@ -261,7 +261,6 @@ input[type="checkbox"]:checked ~ .game-display-check:after
   margin-left: 0.5em
 
 .tags
-
   margin: 0
   padding: 0
   list-style: none
@@ -316,7 +315,7 @@ input[type="checkbox"]:checked ~ .game-display-check:after
 .price-discount
   float: left
   width: 10%
-  margin-right: 2.3em
+  margin-right: 0
 
 .opinion-info
   height: 70%
@@ -380,3 +379,231 @@ input[type="checkbox"]:checked ~ .game-display-check:after
   border: 1px solid var(--primary-color)
   cursor: pointer
   transition: 0.2s
+
+@media (max-width: 720px)
+
+  .new-games-header
+    margin-bottom: 4em
+    float: none
+    height: auto
+
+  .game-box-header
+    float: none
+    margin-bottom: 0.5em
+
+  .games-display-options
+    width: 100%
+    height: 20%
+    margin: 0
+    float: left
+    padding: 0
+
+  .game-display-check
+    margin-top: 1em
+    margin-left: 0.5em
+
+  .game-box
+    height: 25em
+    width: 100%
+    margin-bottom: 2em
+
+  .game-index
+    float: none
+    width: 100%
+    height: 8%
+    border-right: none
+    border-bottom: 2px solid var(--primary-color)
+
+  .game-index p
+    position: relative
+    font-weight: bold
+    font-size: 80%
+    top: 50%
+    margin: 0
+    line-height: 0
+
+  .game-image
+    width: 100%
+    height: 10em
+
+  .game-details
+    width: 100%
+    height: 40%
+
+  .data-header
+    width: 100%
+    height: 35%
+
+  .game-name-box
+    margin: 0
+    float: left
+    width: 100%
+    height: 50%
+
+  .game-name-box p
+    font-size: 85%
+    margin: 0.5em 0 0 0.5em
+    height: 100%
+    font-weight: bold
+    border-bottom: 1px solid var(--background-color-light-version)
+
+  .game-owners-box
+    margin: 0
+    width: 100%
+    height: 50%
+    float: left
+    text-align: left
+
+  .game-owners-box p
+    font-size: 80%
+    margin: 1em 0 0.5em 0.5em
+
+  .dev-data-box
+    margin-top: 0.5em
+    margin-left: 0.5em
+    font-size: 70%
+    width: 100%
+    height: 30%
+
+  .dev-data-box p
+    margin: 0.5em 0 0 0.2em
+
+  .bottom-data-box
+    height: 50%
+    width: 100%
+    margin-top: 0
+    border-top: 1px solid var(--primary-color)
+
+  .price-info
+    margin: 0
+    float: left
+    color: var(--primary-color)
+    font-weight: bold
+    width: 100%
+    height: 30%
+
+  .price-info p
+    float: left
+    margin-top: 0.5em
+    display: inline-block
+    margin-left: 0.5em
+
+  .opinion-info
+    height: 20%
+    float: left
+    width: 100%
+    margin-top: 0.5em
+    border-radius: 0.2em
+    color: white
+
+  .opinion-info:hover div
+    display: none
+
+  .opinion-info div:hover
+    display: block
+
+  .negative-opinions
+    text-align: center
+    font-size: 75%
+    height: 100%
+    float: right
+    background-color: #b60c0c
+    border-radius: 0 0.2em 0.2em 0
+
+  .positive-opinions
+    text-align: center
+    font-size: 75%
+    height: 100%
+    float: left
+    background-color: green
+    border-radius: 0.2em 0 0 0.2em
+
+  .positive-opinions:hover, .negative-opinions:hover
+    transition: 0.2s
+    border-radius: 0.2em
+
+  .negative-opinions p, .positive-opinions p
+    visibility: hidden
+    opacity: 0
+    transition: visibility 0s, opacity .5s linear
+    margin: 0
+
+  .go-to-details-btn
+    float: left
+    background-color: var(--primary-color)
+    border: 1px solid var(--primary-color)
+    border-radius: 0.1em
+    width: 100%
+    height: 40%
+    margin-top: 0.5em
+    margin-right: 0
+
+  .go-to-details-btn p
+    margin-right: 0.5em
+    margin-top: 0.3em
+    text-align: center
+    font-weight: bold
+    font-size: 90%
+
+  .go-to-details-btn:hover
+    background-color: var(--background-color-dark-version)
+    border: 1px solid var(--primary-color)
+    cursor: pointer
+    transition: 0.2s
+
+  .tags
+    margin: 0
+    padding: 0
+    list-style: none
+
+    a
+      float: left
+      top: 25%
+      margin-left: 20px
+      padding: 0 10px 0 12px
+      background: #b60c0c
+      color: #fff
+      text-decoration: none
+      border-bottom-right-radius: 4px
+      border-top-right-radius: 4px
+
+      &:before
+        content: ""
+        float: left
+        position: absolute
+        top: 0
+        left: -12px
+        width: 0
+        height: 0px
+        border-color: transparent #b60c0c transparent transparent
+        border-style: solid
+        border-width: 10px 12px 12px 0
+
+      &:after
+        content: ""
+        position: absolute
+        top: 10px
+        left: 0
+        float: left
+        width: 4px
+        height: 4px
+        border-radius: 2px
+        background: #fff
+
+      &:hover
+        background: #555
+
+        &:before
+          border-color: transparent #555 transparent transparent
+
+  .tags li, .tags a
+    float: left
+    height: 22px
+    line-height: 24px
+    position: relative
+    font-size: 14px
+
+  .price-discount
+    float: left
+    width: 50%
+    margin: 0

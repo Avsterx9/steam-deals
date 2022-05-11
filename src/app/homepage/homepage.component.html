@@ -38,7 +38,9 @@
       <div class="game-details">
         <div class="data-header">
           <div class="game-name-box">
-            <p *ngIf="game.name.length > 35">{{ game.name.substring(0, 35) }}..</p>
+            <abbr title="{{ game.name }}"
+              ><p *ngIf="game.name.length > 35">{{ game.name.substring(0, 35) }}..</p></abbr
+            >
             <p *ngIf="game.name.length < 35">{{ game.name }}</p>
           </div>
           <div class="game-owners-box">
@@ -50,9 +52,13 @@
         </div>
 
         <div class="dev-data-box">
-          <p *ngIf="game.developers.length > 1"><b>Developers:</b> {{ game.developers[0] }}..</p>
+          <abbr title="{{ game.developers }}" *ngIf="game.developers.length > 1"
+            ><p><b>Developers:</b> {{ game.developers[0] }}..</p></abbr
+          >
           <p *ngIf="game.developers.length === 1"><b>Developers:</b> {{ game.developers[0] }}</p>
-          <p *ngIf="game.publishers.length > 1"><b>Publishers:</b> {{ game.publishers[0] }}..</p>
+          <abbr title="{{ game.publishers }}" *ngIf="game.publishers.length > 1"
+            ><p><b>Publishers:</b> {{ game.publishers[0] }}..</p></abbr
+          >
           <p *ngIf="game.publishers.length === 1"><b>Publishers:</b> {{ game.publishers[0] }}</p>
         </div>
 
@@ -62,7 +68,6 @@
             <p *ngIf="game.price.final !== 0" style="color: var(--font-color)">${{ game.price.final }}</p>
 
             <div *ngIf="game.price.discount !== 0 && game.price.discount !== null" class="price-discount">
-              <!--              <p>{{game.price.discount.toFixed()}}%</p>-->
               <ul class="tags">
                 <li>
                   <a href="#">-{{ game.price.discount.toFixed() }}%</a>

@@ -1,1 +1,30 @@
-<p>game-details works!</p>
+<div *ngIf="gameDetails | async as game">
+  <div><img [src]="game.header_image" /></div>
+  <table>
+    <tr>
+      <td>Title:</td>
+      <td>{{ game.name }}</td>
+    </tr>
+    <tr>
+      <td>Developers:</td>
+      <td>{{ game.developers }}</td>
+    </tr>
+    <tr>
+      <td>Publishers:</td>
+      <td>{{ game.publishers }}</td>
+    </tr>
+    <tr>
+      <td>Owners:</td>
+      <td>{{ game.owners.lower_bound }} - {{ game.owners.upper_bound }}</td>
+    </tr>
+    <tr>
+      <td>Ccu yesterday:</td>
+      <td>{{ game.ccu_yesterday }}</td>
+    </tr>
+    <tr>
+      <td>Price:</td>
+      <td>{{ game.price.initial | currency }}</td>
+    </tr>
+  </table>
+  <button class="back-button" (click)="goToGames()">Go back!</button>
+</div>

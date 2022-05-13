@@ -22,4 +22,7 @@ export interface IGame {
   positive_percent: number;
   owners: IOwners;
   price: IPrice;
+  short_description: string;
+  detailed_description: string;
+  screenshots: string[];
 }

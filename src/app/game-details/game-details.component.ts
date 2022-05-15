@@ -4,6 +4,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 import {Observable, switchMap} from "rxjs";
 import {IGame} from "../game-interfaces/game";
 import {Location} from "@angular/common";
+import {UtilService} from "../services/util.service";
 
 @Component({
   selector: "app-game-details",
@@ -13,13 +14,23 @@ import {Location} from "@angular/common";
 export class GameDetailsComponent implements OnInit {
   gameDetails!: Observable<IGame>;
 
-  constructor(private http: GamesService, private route: ActivatedRoute, private location: Location) {}
+  constructor(
+    public gamesService: GamesService,
+    private route: ActivatedRoute,
+    private location: Location,
+    public utilService: UtilService
+  ) {}
 
   ngOnInit() {
-    this.gameDetails = this.route.paramMap.pipe(switchMap((params: ParamMap) => this.http.getGame(params.get("id")!)));
+    this.gameDetails = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => this.gamesService.getGame(params.get("id")!))
+    );
   }
 
-  goToGames() {
-    this.location.back();
+  mouseLeave(game: IGame, positive: any, negative: any) {
+    positive.style.width = `${this.gamesService.getOpinionPercent(game, this.gamesService.OpinionType.POSITIVE)}%`;
+    negative.style.width = `${this.gamesService.getOpinionPercent(game, this.gamesService.OpinionType.NEGATIVE)}%`;
+    negative.children[0].style.visibility = "hidden";
+    negative.children[0].style.opacity = 0;
   }
 }

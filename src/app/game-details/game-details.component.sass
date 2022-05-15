@@ -1,16 +1,178 @@
-.back-button
-  width: 20em
-  height: 50px
-  border: none
-  background: var(--primary-color)
-  border-radius: 0.1em
-  font-size: 18px
+.content-div
+  min-height: 55em
+  padding: 20px 20px
   color: var(--font-color)
-  font-weight: 700
-  cursor: pointer
-  outline: none
 
-.back-button:hover
+.info-div
+  display: flex
+  justify-content: flex-start
+
+.img-div
+  max-width: 35%
+  min-width: 250px
+
+.img-div img
+  width: 100%
+
+.table-div
+  margin: 0 0 0 30px
+  width: 40%
+
+.table-div p
+  font-weight: bold
+  font-size: 150%
+  margin: 3px 0 20px 0
+  border-bottom: 1px solid var(--primary-color)
+
+.table-div table
+  width: 100%
+  text-align: left
+
+.table-div table td
+  padding-bottom: 4px
+
+.price-div
+  width: 25%
+  padding: 5px 30px
+  text-align: right
+
+.price-div p
+  font-weight: bold
+  font-size: 110%
+  margin: 10px auto
+
+.price-div img
+  width: 80%
+
+.price-div table
+  margin: 0.8em 0 0 0
+  width: 80%
+  float: right
+
+.price-div table td
+  text-align: left
+
+.price-div table tr:nth-child(1)
+  margin: 0 auto
+  text-align: right
+  width: 30%
+
+.price-div table td.second-td
+  text-align: right
+
+.text_shadows
+  text-shadow: 1px 1px 0 var(--primary-color), 2px 2px 0 red, 3px 3px red, 4px 4px 0 green
+  font-size: 130%
+  font-weight: bold
+  text-align: center
+  margin: 0.5em 0 0 0
+  color: var(--primary-color)
+  animation: shadows 1.2s ease-in infinite, move 1.2s ease-in infinite
+  letter-spacing: 0.2rem
+  width: 80%
+  float: right
+
+.discount-price
+  text-decoration: line-through
+  color: red
+
+.opinion-info
+  width: 100%
+  margin-top: 1.5em
+  border-radius: 0.2em
+  color: white
+
+.opinion-info:hover div
+  display: none
+
+.opinion-info div:hover
+  display: block
+
+.negative-opinions
+  text-align: center
+  font-size: 75%
+  height: 30px
+  float: right
+  background-color: #b60c0c
+  border-radius: 0 0.2em 0.2em 0
+
+.positive-opinions
+  text-align: center
+  font-size: 75%
+  height: 30px
+  float: left
+  background-color: green
+  border-radius: 0.2em 0 0 0.2em
+
+.positive-opinions:hover, .negative-opinions:hover
   transition: 0.2s
-  background-color: var(--background-color-light-version)
-  border: 1px solid var(--primary-color)
+  border-radius: 0.2em
+
+.positive-opinions p
+  margin: 0.5em 0 0
+
+.negative-opinions p
+  opacity: 0
+  transition: visibility 0s, opacity .5s linear
+  margin: 0.5em 0 0
+
+.description-div
+  margin: 4em 0 0 0
+
+.description-div p
+  margin: 3px 0 0 0
+
+.description-div h2
+  border-bottom: 1px solid var(--primary-color)
+  margin-bottom: 30px
+
+@keyframes shadows
+  0%
+    text-shadow: none
+
+  10%
+    text-shadow: 1px 1px 0 var(--primary-color)
+
+  20%
+    text-shadow: 1px 1px 0 var(--primary-color), 2px 2px 0 var(--primary-color)
+
+  30%
+    text-shadow: 1px 1px 0 var(--primary-color), 2px 2px 0 var(--primary-color), 3px 3px var(--primary-color)
+
+  40%
+    text-shadow: 1px 1px 0 var(--primary-color), 2px 2px 0 var(--primary-color), 3px 3px var(--primary-color), 4px 4px 0 red
+
+  50%
+    text-shadow: 1px 1px 0 var(--primary-color), 2px 2px 0 var(--primary-color), 3px 3px var(--primary-color), 4px 4px 0 red
+
+  60%
+    text-shadow: 1px 1px 0 var(--primary-color), 2px 2px 0 var(--primary-color), 3px 3px var(--primary-color), 4px 4px 0 red
+
+  70%
+    text-shadow: 1px 1px 0 var(--primary-color), 2px 2px 0 var(--primary-color), 3px 3px red
+
+  80%
+    text-shadow: 1px 1px 0 var(--primary-color), 2px 2px 0 var(--primary-color)
+
+  90%
+    text-shadow: 1px 1px 0 var(--primary-color)
+
+  100%
+    text-shadow: none
+
+
+@keyframes move
+  0%
+    transform: translate(0px, 0px)
+
+  40%
+    transform: translate(-4px, -4px)
+
+  50%
+    transform: translate(-4px, -4px)
+
+  60%
+    transform: translate(-4px, -4px)
+
+  100%
+    transform: translate(0px, 0px)

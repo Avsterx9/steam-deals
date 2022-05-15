@@ -1,11 +1,7 @@
 import {Component} from "@angular/core";
 import {GamesService} from "../services/games.service";
 import {IGame} from "../game-interfaces/game";
-
-enum OpinionType {
-  POSITIVE,
-  NEGATIVE,
-}
+import {UtilService} from "../services/util.service";
 
 @Component({
   selector: "app-homepage",
@@ -13,14 +9,13 @@ enum OpinionType {
   styleUrls: ["./homepage.component.sass"],
 })
 export class HomepageComponent {
-  OpinionType = OpinionType;
   public games: IGame[] = [];
   bannerDisplayed = false;
   isRandomChecked: boolean = false;
   titleText: string = "";
   gameDisplayMode!: string;
 
-  constructor(private gamesService: GamesService) {
+  constructor(public gamesService: GamesService, public utilService: UtilService) {
     if (!localStorage.getItem("cookieBannerDisplayed")) this.bannerDisplayed = true;
     this.getTopGames();
   }
@@ -58,28 +53,6 @@ export class HomepageComponent {
     );
   }
 
-  getOpinionPercent(game: IGame, opinionType: OpinionType) {
-    if (opinionType == OpinionType.NEGATIVE) {
-      return ((game.negative / (game.positive + game.negative)) * 100).toFixed(2);
-    }
-    return ((game.positive / (game.positive + game.negative)) * 100).toFixed(2);
-  }
-
-  mouseEnter(div: any) {
-    div.style.width = "100%";
-    div.children[0].style.visibility = "visible";
-    div.children[0].style.opacity = 1;
-  }
-
-  mouseLeave(game: IGame, positive: any, negative: any) {
-    positive.style.width = `${this.getOpinionPercent(game, OpinionType.POSITIVE)}%`;
-    positive.children[0].style.visibility = "hidden";
-    positive.children[0].style.opacity = 0;
-    negative.style.width = `${this.getOpinionPercent(game, OpinionType.NEGATIVE)}%`;
-    negative.children[0].style.visibility = "hidden";
-    negative.children[0].style.opacity = 0;
-  }
-
   switchGames() {
     this.isRandomChecked = !this.isRandomChecked;
 
@@ -88,19 +61,5 @@ export class HomepageComponent {
       return;
     }
     this.getTopGames();
-  }
-
-  abbreviateNumber(num: number) {
-    let SI_SYMBOL = ["", "k", "M", "G", "T", "P", "E"];
-
-    let tier = (Math.log10(Math.abs(num)) / 3) | 0;
-    if (tier == 0) return num;
-
-    let suffix = SI_SYMBOL[tier];
-    let scale = Math.pow(10, tier * 3);
-
-    let scaled = num / scale;
-
-    return scaled.toFixed(1) + suffix;
   }
 }

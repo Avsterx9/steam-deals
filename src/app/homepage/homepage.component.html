@@ -1,4 +1,4 @@
-<div home-page-container>
+<div class="home-page-container">
   <div class="search-box">
     <input type="text" class="main-search-bar" placeholder="Search" />
   </div>
@@ -46,7 +46,10 @@
           <div class="game-owners-box">
             <p>
               <b>Owners:</b>
-              <i>{{ abbreviateNumber(game.owners.lower_bound) }} - {{ abbreviateNumber(game.owners.upper_bound) }}</i>
+              <i
+                >{{ utilService.abbreviateNumber(game.owners.lower_bound) }} -
+                {{ utilService.abbreviateNumber(game.owners.upper_bound) }}</i
+              >
             </p>
           </div>
         </div>
@@ -81,12 +84,12 @@
               class="positive-opinions"
               id="positive-opinions"
               #positive
-              [ngStyle]="{width: getOpinionPercent(game, OpinionType.POSITIVE) + '%'}"
-              (mouseenter)="mouseEnter(positive)"
-              (mouseleave)="mouseLeave(game, positive, negative)"
+              [ngStyle]="{width: gamesService.getOpinionPercent(game, gamesService.OpinionType.POSITIVE) + '%'}"
+              (mouseenter)="gamesService.mouseEnter(positive)"
+              (mouseleave)="gamesService.mouseLeave(game, positive, negative)"
             >
               <p>
-                {{ getOpinionPercent(game, OpinionType.POSITIVE) }}%
+                {{ gamesService.getOpinionPercent(game, gamesService.OpinionType.POSITIVE) }}%
                 <span style="color: #c2c2c2">({{ game.positive }} votes)</span>
               </p>
             </div>
@@ -94,12 +97,12 @@
               class="negative-opinions"
               id="negative-opinions"
               #negative
-              [ngStyle]="{width: getOpinionPercent(game, OpinionType.NEGATIVE) + '%'}"
-              (mouseenter)="mouseEnter(negative)"
-              (mouseleave)="mouseLeave(game, positive, negative)"
+              [ngStyle]="{width: gamesService.getOpinionPercent(game, gamesService.OpinionType.NEGATIVE) + '%'}"
+              (mouseenter)="gamesService.mouseEnter(negative)"
+              (mouseleave)="gamesService.mouseLeave(game, positive, negative)"
             >
               <p>
-                {{ getOpinionPercent(game, OpinionType.NEGATIVE) }}%
+                {{ gamesService.getOpinionPercent(game, gamesService.OpinionType.NEGATIVE) }}%
                 <span style="color: #c2c2c2">({{ game.negative }} votes)</span>
               </p>
             </div>

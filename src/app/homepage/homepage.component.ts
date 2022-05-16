@@ -31,7 +31,7 @@ export class HomepageComponent {
   }
 
   getRandomGames() {
-    this.titleText = "Check one of those games!";
+    this.titleText = "🎲 Check one of those Games!";
     this.gameDisplayMode = "Random";
 
     this.gamesService.getRandomGames(20).subscribe(
@@ -45,7 +45,7 @@ export class HomepageComponent {
   }
 
   getTopGames() {
-    this.titleText = "Top Games";
+    this.titleText = "🔥 Top Games in the last 2 weeks";
     this.gameDisplayMode = "Trending";
 
     this.gamesService.getTopGames(0, 20).subscribe(

@@ -16,13 +16,13 @@ export class HomepageComponent {
   OpinionType = OpinionType;
   public games: IGame[] = [];
   bannerDisplayed = false;
-  isRandomChecked: boolean = true;
+  isRandomChecked: boolean = false;
   titleText: string = "";
-  gameDisplayMode: string = "Random";
+  gameDisplayMode!: string;
 
   constructor(private gamesService: GamesService) {
     if (!localStorage.getItem("cookieBannerDisplayed")) this.bannerDisplayed = true;
-    this.getRandomGames();
+    this.getTopGames();
   }
 
   hideCookieContainer() {

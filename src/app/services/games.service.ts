@@ -31,8 +31,7 @@ export class GamesService {
   }
 
   public getGame(id: string): Observable<IGame> {
-    let params = new HttpParams().set("app_id", id);
-    return this.http.get<IGame>(this.backendURL + "/id/{appid}", {withCredentials: true, params});
+    return this.http.get<IGame>(this.backendURL + "/id/" + id);
   }
 
   getOpinionPercent(game: IGame, opinionType: OpinionType) {

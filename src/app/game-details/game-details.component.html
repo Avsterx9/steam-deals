@@ -78,6 +78,14 @@
     </div>
   </div>
 
+  <div class="slider-div">
+    <ngx-slick-carousel class="carousel" [config]="slideConfig">
+      <div ngxSlickItem *ngFor="let slide of game.screenshots" class="slide">
+        <img src="{{ slide }}" alt="game screenshot" height="200px" width="100%" class="slider-img" />
+      </div>
+    </ngx-slick-carousel>
+  </div>
+
   <div class="description-div">
     <h2>About this game:</h2>
     <div [innerHTML]="game.detailed_description || game.short_description"></div>

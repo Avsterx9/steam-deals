@@ -3,7 +3,6 @@ import {GamesService} from "../services/games.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {Observable, switchMap} from "rxjs";
 import {IGame} from "../game-interfaces/game";
-import {Location} from "@angular/common";
 import {UtilService} from "../services/util.service";
 
 @Component({
@@ -14,12 +13,7 @@ import {UtilService} from "../services/util.service";
 export class GameDetailsComponent implements OnInit {
   gameDetails!: Observable<IGame>;
 
-  constructor(
-    public gamesService: GamesService,
-    private route: ActivatedRoute,
-    private location: Location,
-    public utilService: UtilService
-  ) {}
+  constructor(public gamesService: GamesService, private route: ActivatedRoute, public utilService: UtilService) {}
 
   ngOnInit() {
     this.gameDetails = this.route.paramMap.pipe(
@@ -33,4 +27,14 @@ export class GameDetailsComponent implements OnInit {
     negative.children[0].style.visibility = "hidden";
     negative.children[0].style.opacity = 0;
   }
+
+  slideConfig = {
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: true,
+    "infinite:": true,
+    speed: 600,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
 }

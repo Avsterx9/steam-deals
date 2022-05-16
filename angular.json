@@ -27,8 +27,12 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "sass",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.sass"],
-            "scripts": []
+            "styles": [
+              "src/styles.sass",
+              "node_modules/slick-carousel/slick/slick.scss",
+              "node_modules/slick-carousel/slick/slick-theme.scss"
+            ],
+            "scripts": ["node_modules/jquery/dist/jquery.min.js", "node_modules/slick-carousel/slick/slick.min.js"]
           },
           "configurations": {
             "production": {
@@ -122,8 +126,12 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "sass",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.sass"],
-            "scripts": []
+            "styles": [
+              "src/styles.sass",
+              "node_modules/slick-carousel/slick/slick.scss",
+              "node_modules/slick-carousel/slick/slick-theme.scss"
+            ],
+            "scripts": ["node_modules/jquery/dist/jquery.min.js", "node_modules/slick-carousel/slick/slick.min.js"]
           }
         },
         "lint": {

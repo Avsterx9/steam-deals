@@ -13,6 +13,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserProfileComponent} from "./user-profile/user-profile.component";
 import {PopupAlertComponent} from "./popup-alert/popup-alert.component";
 import {GameDetailsComponent} from "./game-details/game-details.component";
+import {SlickCarouselModule} from "ngx-slick-carousel";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import {GameDetailsComponent} from "./game-details/game-details.component";
     PopupAlertComponent,
     GameDetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule, SlickCarouselModule],
   providers: [],
   bootstrap: [AppComponent],
 })

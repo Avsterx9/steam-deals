@@ -30,6 +30,12 @@ export class GamesService {
     return this.http.get(this.backendURL + "/top100in2weeks", {withCredentials: true, params});
   }
 
+  public getMatchingGames(title: string) {
+    let params = new HttpParams().set("title", title);
+
+    return this.http.get(this.backendURL + "/search", {withCredentials: true, params});
+  }
+
   public getGame(id: string): Observable<IGame> {
     return this.http.get<IGame>(this.backendURL + "/id/" + id);
   }

@@ -1,6 +1,15 @@
-<div class="home-page-container">
-  <div class="search-box">
-    <input type="text" class="main-search-bar" placeholder="Search" />
+<div home-page-container>
+  <div class="wrapper">
+    <div class="search-input">
+      <!--        <a href="" target="_blank" hidden></a>-->
+      <input type="text" placeholder="Type to search.." (keyup)="onKeyUpEvent($event)" />
+      <div class="autocom-box" *ngFor="let game of gamesSearchList">
+        <div class="search-result" (click)="redirectToGameDetails(game.steam_appid)">
+          <p>{{ game.name }}</p>
+        </div>
+      </div>
+      <div class="icon"><i class="fas fa-search"></i></div>
+    </div>
   </div>
 
   <div class="content-box">

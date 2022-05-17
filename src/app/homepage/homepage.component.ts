@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ElementRef, ViewChild} from "@angular/core";
 import {GamesService} from "../services/games.service";
 import {IGame} from "../game-interfaces/game";
 import {UtilService} from "../services/util.service";
@@ -14,6 +14,10 @@ export class HomepageComponent {
   isRandomChecked: boolean = false;
   titleText: string = "";
   gameDisplayMode!: string;
+  public gamesSearchList: IGame[] = [];
+
+  // @ts-ignore
+  @ViewChild("sugList") sugList: ElementRef;
 
   constructor(public gamesService: GamesService, public utilService: UtilService) {
     if (!localStorage.getItem("cookieBannerDisplayed")) this.bannerDisplayed = true;
@@ -61,5 +65,22 @@ export class HomepageComponent {
       return;
     }
     this.getTopGames();
+  }
+
+  onKeyUpEvent(event: any) {
+    let searchPhrase = event.target.value;
+    this.gamesService.getMatchingGames(searchPhrase).subscribe(
+      (res: any) => {
+        this.gamesSearchList = res;
+        document.querySelector(".search-input")!.classList.add("active");
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  redirectToGameDetails(index: number) {
+    window.location.href = `/${index}`;
   }
 }

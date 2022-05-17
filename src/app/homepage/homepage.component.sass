@@ -1,25 +1,69 @@
 home-page-container
   width: 100%
 
-.search-box
-  margin: auto
-  color: var(--font-color)
-  background-color: inherit
-  padding: 2em
+.wrapper
+  max-width: 80%
+  margin: 4em auto
 
-input[type="text"]
-  margin: auto
-  display: block
-  background-color: white
-  width: 80%
-  height: 10%
+.wrapper .search-input
+  background: var(--background-color-light-version)
+  width: 100%
+  border-radius: 5px
+  position: relative
+  box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12)
+  padding: 0 0px 0 20px
+
+.search-input input
+  background: var(--background-color-light-version)
+  height: 55px
+  width: 98%
+  outline: none
   border: none
-  padding: 1em
-  border-radius: 0.1em
+  border-radius: 5px
+  font-size: 18px
 
-input:focus
-  outline: none !important
-  transition: 0.3s
+.search-input.active input
+  border-radius: 5px 5px 0 0
+
+.search-input .autocom-box
+  padding: 0
+  pointer-events: none
+  max-height: 250px
+
+.search-input.active .autocom-box
+  opacity: 1
+  pointer-events: auto
+
+.search-result
+  width: 100%
+  padding-top: 1em
+  padding-bottom: 1em
+  border-radius: 3px
+  border-bottom: 1px solid var(--background-color-dark-version)
+
+.search-result p
+  padding: 0 0 0 1em
+  margin: 0
+
+.search-result:hover
+  background-color: var(--primary-color)
+  color: var(--font-color)
+  cursor: pointer
+
+.search-input.active .autocom-box .search-result
+  display: block
+
+.search-input .icon
+  position: absolute
+  right: 0px
+  top: 0px
+  height: 55px
+  width: 55px
+  text-align: center
+  line-height: 55px
+  font-size: 20px
+  color: var(--primary-color)
+  cursor: pointer
 
 .content-box
   color: var(--font-color)

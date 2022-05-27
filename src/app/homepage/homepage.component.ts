@@ -79,8 +79,4 @@ export class HomepageComponent {
       }
     );
   }
-
-  redirectToGameDetails(index: number) {
-    window.location.href = `/${index}`;
-  }
 }

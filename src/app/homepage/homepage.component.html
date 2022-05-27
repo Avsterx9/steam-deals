@@ -1,14 +1,24 @@
 <div home-page-container>
   <div class="wrapper">
     <div class="search-input">
-      <!--        <a href="" target="_blank" hidden></a>-->
-      <input type="text" placeholder="Type to search.." (keyup)="onKeyUpEvent($event)" />
-      <div class="autocom-box" *ngFor="let game of gamesSearchList">
-        <div class="search-result" (click)="redirectToGameDetails(game.steam_appid)">
+      <input type="text" #searchBar placeholder="Type to search.." (keyup)="onKeyUpEvent($event)" />
+      <div class="icon"><i class="fas fa-search"></i></div>
+    </div>
+
+    <div class="result-box" *ngIf="searchBar.value !== ''">
+      <div class="search-result" *ngFor="let game of gamesSearchList" [routerLink]="['/game', game.steam_appid]">
+        <div class="sug-game-img">
+          <img src="{{ game.header_image }}" />
+        </div>
+        <div class="sug-game-name">
           <p>{{ game.name }}</p>
         </div>
+        <div class="sug-game-price">
+          <p *ngIf="game.price.final === 0">FREE</p>
+          <p *ngIf="game.price.final === null">FREE</p>
+          <p *ngIf="game.price.final > 0" style="color: var(--font-color)">${{ game.price.final }}</p>
+        </div>
       </div>
-      <div class="icon"><i class="fas fa-search"></i></div>
     </div>
   </div>
 

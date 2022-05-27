@@ -2,56 +2,79 @@ home-page-container
   width: 100%
 
 .wrapper
-  max-width: 80%
+  position: relative
+  width: 80%
   margin: 4em auto
 
-.wrapper .search-input
-  background: var(--background-color-light-version)
+.search-input
   width: 100%
+  background: white
   border-radius: 5px
-  position: relative
   box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12)
-  padding: 0 0px 0 20px
 
 .search-input input
-  background: var(--background-color-light-version)
+  background-color: white
   height: 55px
-  width: 98%
+  width: 90%
   outline: none
   border: none
   border-radius: 5px
   font-size: 18px
+  padding-left: 1em
 
 .search-input.active input
   border-radius: 5px 5px 0 0
 
-.search-input .autocom-box
-  padding: 0
-  pointer-events: none
-  max-height: 250px
-
-.search-input.active .autocom-box
-  opacity: 1
-  pointer-events: auto
+.result-box
+  color: var(--font-color)
+  background-color: var(--background-color-light-version)
+  z-index: 5
+  width: 100%
+  box-sizing: border-box
+  position: absolute
+  overflow-y: auto
+  max-height: 300px
 
 .search-result
   width: 100%
-  padding-top: 1em
-  padding-bottom: 1em
+  display: flex
+  position: relative
   border-radius: 3px
   border-bottom: 1px solid var(--background-color-dark-version)
 
+.sug-game-img
+  display: flex
+  width: 15%
+  height: auto
+  float: left
+
+.sug-game-img > img
+  width: 100%
+  height: auto
+  object-fit: contain
+  transition: transform .2s
+
+.sug-game-name
+  margin-top: 1em
+  float: left
+  margin-left: 1em
+
+.sug-game-price
+  margin-top: 1em
+  margin-left: auto
+  margin-right: 1em
+
+.sug-game-price p
+  padding: 0
+
 .search-result p
-  padding: 0 0 0 1em
+  padding: 0
   margin: 0
 
 .search-result:hover
   background-color: var(--primary-color)
   color: var(--font-color)
   cursor: pointer
-
-.search-input.active .autocom-box .search-result
-  display: block
 
 .search-input .icon
   position: absolute

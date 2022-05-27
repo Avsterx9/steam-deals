@@ -32,9 +32,30 @@ export class GameDetailsComponent implements OnInit {
     slidesToShow: 4,
     slidesToScroll: 1,
     dots: true,
-    "infinite:": true,
+    infinite: true,
     speed: 600,
     autoplay: true,
     autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 550,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 }

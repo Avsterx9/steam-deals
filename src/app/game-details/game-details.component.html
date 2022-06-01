@@ -49,7 +49,7 @@
       </table>
     </div>
   </div>
-  <div class="opinion-info">
+  <div class="opinion-info" *ngIf="game.positive !== 0 || game.negative !== 0">
     <div
       class="positive-opinions"
       id="positive-opinions"
@@ -75,6 +75,11 @@
         {{ gamesService.getOpinionPercent(game, gamesService.OpinionType.NEGATIVE) }}%
         <span style="color: #c2c2c2">({{ game.negative }} votes)</span>
       </p>
+    </div>
+  </div>
+  <div class="opinion-info" *ngIf="game.positive === 0 && game.negative === 0">
+    <div class="no-opinions" id="no-opinions">
+      <p>NOT AVAILABLE</p>
     </div>
   </div>
 

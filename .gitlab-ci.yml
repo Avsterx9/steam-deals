@@ -65,12 +65,12 @@ e2e tests:
     - deactivate && cd ..
     - npm ci
     - ng serve &
-    - npx cypress run
+    - npx cypress run --reporter junit --reporter-options "mochaFile=results/report-[hash].xml"
   artifacts:
     when: always
     reports:
       junit:
-        - cypress/report.xml
+        - "**/report-*.xml"
     paths:
       - cypress/screenshots
       - cypress/videos

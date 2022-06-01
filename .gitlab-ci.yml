@@ -44,7 +44,7 @@ Check code with Prettier:
     - echo [ Checking with Prettier ]
     - npx prettier --check .
 
-e2e tests:
+.e2e-base:
   image: $CI_REGISTRY_IMAGE/e2e-image
   stage: test and code analysis
   rules:
@@ -57,7 +57,7 @@ e2e tests:
     - when: manual
   variables:
     GIT_SUBMODULE_STRATEGY: recursive
-  script:
+  before_script:
     - cd steam-deals-backend
     - make build-dev
     - . venv/bin/activate
@@ -65,7 +65,6 @@ e2e tests:
     - deactivate && cd ..
     - npm ci
     - ng serve &
-    - npx cypress run --reporter junit --reporter-options "mochaFile=results/report-[hash].xml"
   artifacts:
     when: always
     reports:
@@ -75,13 +74,28 @@ e2e tests:
       - cypress/screenshots
       - cypress/videos
 
+e2e tests chrome:
+  extends: .e2e-base
+  script:
+    - npx cypress run --reporter junit --reporter-options "mochaFile=results/report-[hash].xml" --browser chrome
+
+e2e tests firefox:
+  extends: .e2e-base
+  script:
+    - npx cypress run --reporter junit --reporter-options "mochaFile=results/report-[hash].xml" --browser firefox
+
+e2e tests electron:
+  extends: .e2e-base
+  script:
+    - npx cypress run --reporter junit --reporter-options "mochaFile=results/report-[hash].xml" --browser electron
+
 
 #==============================| BUILD |==============================
 
 Build and push docker image:
   image: docker:20.10.13
   stage: build
-  needs: [ "Lint code with ESLint", "Check code with Prettier", "e2e tests" ]
+  needs: [ "Lint code with ESLint", "Check code with Prettier", "e2e tests chrome",  "e2e tests firefox", "e2e tests electron" ]
   variables:
     DOCKER_DRIVER: overlay2
     DOCKER_TLS_CERTDIR: ""

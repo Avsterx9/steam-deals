@@ -414,6 +414,15 @@ input[type="checkbox"]:checked ~ .game-display-check:after
   background-color: green
   border-radius: 0.2em 0 0 0.2em
 
+.no-opinions
+  text-align: center
+  font-size: 75%
+  width: 100%
+  height: 100%
+  float: left
+  background-color: #313131
+  border-radius: 0.2em 0 0 0.2em
+
 .positive-opinions:hover, .negative-opinions:hover
   transition: 0.2s
   border-radius: 0.2em
@@ -422,6 +431,9 @@ input[type="checkbox"]:checked ~ .game-display-check:after
   visibility: hidden
   opacity: 0
   transition: visibility 0s, opacity .5s linear
+  margin: 0.4em 0 0
+
+.no-opinions p
   margin: 0.4em 0 0
 
 .go-to-details-btn
@@ -593,6 +605,9 @@ input[type="checkbox"]:checked ~ .game-display-check:after
     visibility: hidden
     opacity: 0
     transition: visibility 0s, opacity .5s linear
+    margin: 0
+
+  .no-opinions p
     margin: 0
 
   .go-to-details-btn

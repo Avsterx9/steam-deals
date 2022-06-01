@@ -24,10 +24,15 @@ describe("get game details", () => {
 
 describe("Search for game", () => {
   it("search for game successfully", () => {
+    cy.intercept({
+      method: "GET",
+      url: Cypress.env("backendUrl") + "/apps/search?title=counter%20strike",
+    }).as("searchForGame");
+
     cy.visit("/");
     cy.get("button[class='cookie-btn']").contains("Accept").click();
     cy.get("input[type='text']").type("counter strike");
-    cy.wait(3000);
+    cy.wait("@searchForGame");
     cy.get("div[class='search-result']").contains("Counter-Strike: Global Offensive").click();
     cy.get("div[class='table-div']").contains("Counter-Strike: Global Offensive").should("be.visible");
   });

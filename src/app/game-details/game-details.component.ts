@@ -54,6 +54,7 @@ export class GameDetailsComponent implements OnInit {
         breakpoint: 550,
         settings: {
           slidesToShow: 1,
+          dots: false,
         },
       },
     ],
